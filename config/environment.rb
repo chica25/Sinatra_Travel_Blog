@@ -11,7 +11,3 @@ ActiveRecord::Base.establish_connection(
 require './app/controllers/application_controller'
 require_all 'app'
 
-desc 'drop into the Pry console'
-task :console => :environment do
-  Pry.start
-end

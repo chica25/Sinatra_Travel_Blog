@@ -5,3 +5,8 @@ if ActiveRecord::Migrator.needs_migration?
 end
 
 run ApplicationController
+
+desc 'drop into the Pry console'
+task :console => :environment do
+  Pry.start
+end
