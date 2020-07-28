@@ -14,8 +14,8 @@
 ActiveRecord::Schema.define(version: 20200728060212) do
 
   create_table "blogs", force: :cascade do |t|
+    t.string  "name"
     t.integer "user_id"
-    t.string  "photographs"
   end
 
   create_table "users", force: :cascade do |t|
