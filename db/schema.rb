@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20200729015757) do
     t.string  "title"
     t.string  "location"
     t.string  "description"
-    t.string  "image"
+    t.string  "image_url"
   end
 
   create_table "users", force: :cascade do |t|
