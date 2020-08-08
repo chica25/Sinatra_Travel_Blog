@@ -31,12 +31,19 @@ class BlogController < ApplicationController
 
   # edit action(view for form that will update)
   get 'blogs/:id/edit' do
-    
+    erb :blogs/edit
   end
 
   # update action
+  
+  # delete action
+  delete '/blogs/:id/' do
+
+  end
 
 end
+
+
 
 
 

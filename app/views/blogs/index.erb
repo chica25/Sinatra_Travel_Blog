@@ -5,8 +5,11 @@
         <p>Location:<%= blog.location %></p>
         <p>Description:<%= blog.description %></p>
         <p>img_url:<%= blog.image_url %></p> 
-
-        <p><a href="/blogs/<%= blog.id %>"><%= blog.title %></a>
+        <form action="blogs/<%=blog.id %>" method="POST">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="button" value="✓"> 
+        </form>
+        <!--<p><a href="/blogs/<%= blog.id %>"><%= blog.title %></a>-->
         
 <% end %>
 
