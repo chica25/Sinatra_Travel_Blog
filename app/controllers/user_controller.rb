@@ -1,3 +1,5 @@
+require './config/environment'
+
 class UserController < ApplicationController
 #add validations here
 
@@ -28,3 +30,4 @@ class UserController < ApplicationController
 
     #delete action
 end
+

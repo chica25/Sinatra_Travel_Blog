@@ -1,0 +1,13 @@
+<h3>This displays all blogs</h3>
+
+    <% @blogs.each do |blog| %>
+       <p>Title:<%= blog.title %></p>
+        <p>Location:<%= blog.location %></p>
+        <p>Description:<%= blog.description %></p>
+        <p>img_url:<%= blog.image_url %></p> 
+
+        <p><a href="/blogs/<%= blog.id %>"><%= blog.title %></a>
+        
+<% end %>
+
+
