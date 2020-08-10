@@ -1,16 +1,18 @@
-require 'pry'
 require './config/environment'
 
 class BlogController < ApplicationController
  
  # index action
   get '/blogs' do
+    session[:message] = 'hello world' 
       @blogs = Blog.all #=> shows who is the current user
       erb :'blogs/index'
   end
 
   # new action(view form that will create)
   get '/blogs/new' do
+    #binding.pry
+    @message = session[:message]
     erb :'blogs/new'
   end
 
@@ -23,6 +25,7 @@ class BlogController < ApplicationController
 
   # show action
   get '/blogs/:id' do
+    @message = session[:message]
     @blog = Blog.find_by_id(params[:id])
     if @blog 
       erb :'blogs/show'

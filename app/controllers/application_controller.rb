@@ -1,18 +1,20 @@
 require './config/environment'
 
+
 class ApplicationController < Sinatra::Base
 #configuration and helper methods
   configure do
     set :public_folder, 'public'
     set :views, 'app/views'
     enable :sessions
-    set :session_secret, "secret"
+    set :session_secret, SecureRandom.hex(64)
   end
     # write sessions 
     # session ex:  enable :sessions
-    get '/hey' do
-      @session = session
-    end
+
+    # get '/hey' do
+    #   @session = session
+    # end
  
   get '/' do
     erb :welcome

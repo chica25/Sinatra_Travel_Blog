@@ -6,9 +6,8 @@ class UserController < ApplicationController
     #index action
     
     #new action(view for from that will create)
-    get 'users/new' do
-
-        erb :'user/new'
+    get '/signup' do
+        erb :'users/signup'
     end
     #create action
     post '/users/new' do
