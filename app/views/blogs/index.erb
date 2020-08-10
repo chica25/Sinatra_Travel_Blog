@@ -1,15 +1,19 @@
 <h3>This displays all blogs</h3>
 
     <% @blogs.each do |blog| %>
-       <p>Title:<%= blog.title %></p>
-        <p>Location:<%= blog.location %></p>
-        <p>Description:<%= blog.description %></p>
-        <p>img_url:<%= blog.image_url %></p> 
+       <p><%= blog.title %></p>
+
         <form action="blogs/<%=blog.id %>" method="POST">
-        <input type="hidden" name="_method" value="DELETE">
-        <input type="button" value="✓"> 
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="submit" value="X"> 
         </form>
-        <!--<p><a href="/blogs/<%= blog.id %>"><%= blog.title %></a>-->
+
+        <!--<form action="blogs/<%=blog.id %>" method="POST">
+            <input type="hidden" name="_method" value="PATCH">
+            <input type="hidden" name="complete" value="true">
+            <input type="submit" value="✓"> 
+        </form>-->
+       <a href="/blogs/<%= blog.id %>/edit">edit blog</a>
         
 <% end %>
 

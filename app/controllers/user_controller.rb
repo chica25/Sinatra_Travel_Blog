@@ -16,7 +16,7 @@ class UserController < ApplicationController
         @user = User.new(params)
         if @user.save
             #set session
-            redirect :'user/index'
+            redirect to :'user/index'
         else
             erb :'user/new'
         end
