@@ -9,16 +9,41 @@ class UserController < ApplicationController
     get '/signup' do
         erb :'users/signup'
     end
-    #create action
-    post '/users/new' do
-        
-        @user = User.new(params)
-        if @user.save
-            #set session
-            redirect to :'user/index'
+
+
+    post '/signup' do
+        #binding.pry
+        user = User.new(params)
+        session[:user_id] = user.id
+        redirect to '/blogs'
+    end
+
+    get '/login' do
+        erb :'users/login'
+    end
+
+    post '/login' do
+        erb :'users/login'
+        user = User.find_by(email: params[:email])
+        if user && user.authentication(params[:password])
+            redirect to '/blogs'
         else
-            erb :'user/new'
+            erb :'users/login'
         end
+    end
+end
+
+
+    #create action
+    # post '/users/new' do
+        
+    #     @user = User.new(params)
+    #     if @user.save
+    #         #set session
+    #         redirect to :'user/index'
+    #     else
+    #         erb :'user/new'
+    #     end
     end
 
     #show action
@@ -28,5 +53,5 @@ class UserController < ApplicationController
     #update action
 
     #delete action
-end
+
 
