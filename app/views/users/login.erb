@@ -1,9 +1,12 @@
 <h2>Login</h2>
+    <% if @error %>
+        <p><%= @error %></p>
+    <% end %>
 
-<form action="signup" method="POST">
-    <label for="email">Email:</label>
-    <input type="text" name="email" id="">
-    <label for="password">Password:</label>
-    <input type="password" name="password" id="">
-    <input type="submit" value="Login">
-</form>
+    <form action="signup" method="POST">
+        <label for="email">Email:</label>
+        <input type="text" name="email" id="">
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="">
+        <input type="submit" value="login">
+    </form>

@@ -13,8 +13,8 @@ class UserController < ApplicationController
 
     post '/signup' do
         #binding.pry
-        user = User.new(params)
-        session[:user_id] = user.id
+        @user = User.new(params)
+        session[:user_id] = @user.id
         redirect to '/blogs'
     end
 
@@ -23,13 +23,19 @@ class UserController < ApplicationController
     end
 
     post '/login' do
-        erb :'users/login'
         user = User.find_by(email: params[:email])
-        if user && user.authentication(params[:password])
+        if user && @user.authenticate(params[:password])
+            session[:user_id] = user.id
             redirect to '/blogs'
         else
+            @error = 'invalid login. Please try again'
             erb :'users/login'
         end
+    end
+
+    delete '/logout' do
+        session.destroy
+        redirect to '/blogs'
     end
 end
 
@@ -44,7 +50,7 @@ end
     #     else
     #         erb :'user/new'
     #     end
-    end
+    #end
 
     #show action
 
