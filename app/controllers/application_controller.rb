@@ -7,8 +7,8 @@ class ApplicationController < Sinatra::Base
     set :public_folder, 'public'
     set :views, 'app/views'
     enable :sessions
-    set :session_secret, ENV['SESSION_SECRET']
-   # SecureRandom.hex(64)
+    set :session_secret, "dogs"
+    #SecureRandom.hex(64)
   end
     # write sessions 
     # session ex:  enable :sessions
@@ -22,7 +22,11 @@ class ApplicationController < Sinatra::Base
   end
 helpers do 
   def current_user
-      @user = User.first
+      @user = User.find_by_id(session[:user_id])
+      #@user = User.first
+    end
+    def user_logged_in
+      !!session[:user_id]
     end
   end
 end

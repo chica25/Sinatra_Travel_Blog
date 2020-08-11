@@ -1,6 +1,6 @@
-<h3>This displays all blogs</h3>
+<h3>My Blogs</h3>
 
-    <% @blogs.each do |blog| %>
+    <% @user.each do |blog| %>
        <p><%= blog.title %></p>
 
         <form action="blogs/<%=blog.id %>" method="POST">

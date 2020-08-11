@@ -4,10 +4,11 @@ class BlogController < ApplicationController
  
  # index action
   get '/blogs' do
-    session[:message] = 'hello world' 
-      @blogs = Blog.all #=> shows who is the current user
+    @user = current_user
+     @blogs = Blog.all #=> shows who is the current user
       erb :'blogs/index'
-  end
+    end
+end
 
   # new action(view form that will create)
   get '/blogs/new' do
@@ -43,24 +44,18 @@ class BlogController < ApplicationController
    # binding.pry
   end
 
-  # update action
   patch '/blogs/:id' do
-     #set.blog
-    #@blog.update(params)
     @blog = Blog.find_by_id(params[:id])
-    @blog.title = params[:title]
-    @blog.description = params[:description]
-    @blog.location = params[:location]
-    @blog.image_url = params[:image_url]
-    @blog.save
-    redirect to "/blogs/#{@blog.id}"
-  end
+    params.delete(:_method)
+    @blog.update(params)
+    redirect "/blogs/#{@blog.id}"
+    end 
   
   # delete action
   # side note - Users can only delete records that belong to them
   delete '/blogs/:id' do
-    #@blog = current_user.Blog.find_by_id(params[:id])
-    @blog = Blog.find_by_id(params[:id])
+    @blog = current_user.Blog.find_by_id(params[:id])
+    #@blog = Blog.find_by_id(params[:id])
     #@blog.destroy
     @blog.delete 
     redirect to '/blogs'

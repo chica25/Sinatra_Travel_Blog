@@ -6,7 +6,7 @@ end
 
 ActiveRecord::Base.logger = Logger.new(STDOUT)
 
-use Rack::MethodOverride
+use Rack::MethodOverride #=> What it does? 
 use UserController
 use BlogController
 run ApplicationController
