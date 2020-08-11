@@ -4,11 +4,10 @@ class BlogController < ApplicationController
  
  # index action
   get '/blogs' do
-    @user = current_user
+     @user = current_user
      @blogs = Blog.all #=> shows who is the current user
       erb :'blogs/index'
     end
-end
 
   # new action(view form that will create)
   get '/blogs/new' do
@@ -19,7 +18,7 @@ end
 
   # create action
   post '/blogs' do
-    @blog = Blog.create(title: params[:title], location: params[:location], description: params[:description], image_url: params[:image_url])
+    @blog = current_user.blogs.create(title: params[:title], location: params[:location], description: params[:description], image_url: params[:image_url])
     redirect to "/blogs/#{@blog.id}" #=> a response to the original post request
   end
 
