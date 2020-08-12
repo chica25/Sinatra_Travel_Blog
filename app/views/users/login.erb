@@ -2,8 +2,9 @@
     <% if @error %>
         <p><%= @error %></p>
     <% end %>
+  
 
-    <form action="signup" method="POST">
+    <form action="/signup" method="POST">
         <label for="email">Email:</label>
         <input type="text" name="email" id="">
         <label for="password">Password:</label>

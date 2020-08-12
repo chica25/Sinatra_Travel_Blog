@@ -13,3 +13,4 @@ gem 'bcrypt'
 gem 'tux'
 gem 'dotenv'
 gem 'chartkick'
+

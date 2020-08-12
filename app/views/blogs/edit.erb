@@ -1,4 +1,4 @@
-<form action="/blogs/<%= @blog.id %>" method="POST">
+<form action="/blogs<%= @blog.id %>" method="POST">
 
     <input id="hidden" type="hidden" name="_method" value="PATCH">
     <label for="title">Title:</label>
@@ -15,4 +15,13 @@
      <br><br>
     <input type="submit" value="Update!">
 </form>
+
+
+
+        <form action="/blogs<%= @blog.id %>" method="POST">           
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" value="X"> 
+        </form>
+         <a href="/blogs<%= @blog.id %>/edit">Edit blog</a>
+
 

@@ -1,35 +1,9 @@
-<h3>My Blogs</h3>
-
-
-      <!-- <div class="text-center"><h1>Welcome to Travel Log, <%= @user.user_name %></h1>
-<div class="text-center">
-   <a class="btn btn-success" style="margin: 20px" href="/blogs/new" role="button">Add New</a>
-</div>
-<div class="row">
-  <% @user.blogs.each do |blog| %>
-       <p><%= blog.title %></p>
- <div class="card" style="width: 15rem; margin: 20px">
-      <div class="text-center">
-       <div class="card-header"><a href='/blogs/<%= blog.id %>'><%= blog.title %></a></div>
-     </div>
-</div>
-  <% end %>
-</div>  -->
-
-
-
 <h3>This displays all blogs</h3>
- <% if @user.blogs.empty? %>
-     <%= "You do not have any blogs on your list."%><a href='/blogs/new' class="button">Add a Blog!</a>
-<% else %>    
-        
-<% @user.blogs.each do |blog| %><p><%= blog.title %></p>
-        <form action="blogs/<%=blog.id %>" method="POST">           
-        <input type="hidden" name="_method" value="DELETE">
-         <input type="submit" value="X"> 
-         </form>
 
-         <a href="/blogs/<%= blog.id %>/edit">edit blog</a>
+    <% if @user.blogs.empty? %>
+        <%= "You do not have any blogs on your list."%><a href='/blogs/new' class="button">Add a Blog!</a>
+    <% else %>    
+        <% @user.blogs.each do |blog| %><p><%= blog.title %></p>
     <% end %>
 <% end %>
 
