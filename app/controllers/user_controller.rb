@@ -10,13 +10,20 @@ class UserController < ApplicationController
         erb :'/users/signup'
     end
 
+    # --new
+    post '/users' do
+        @user = User.create(params)
+        session[:user_id] = @user.id
+        redirect '/blogs'
+    end
+    #--
+
     post '/signup' do
-        #binding.pry
         @user = User.new(params)
         @user.save
         #binding.pry
         if @user.save
-            session[:user_id] = @user.id
+            #session[:user_id] = @user.id
             redirect '/blogs'
         else
             erb :'users/signup'
@@ -35,7 +42,7 @@ end
         binding.pry
         @user = User.find_by(email: params[:email])
         if @user && @user.authenticate(params[:password])
-            #binding.pry
+            # binding.pry
             session[:user_id] = @user.id
             redirect '/blogs'
         else
