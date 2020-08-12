@@ -1,6 +1,6 @@
 <h3>Welcome back, <%= @user.user_name %></h3>
 
-    <% if @user.blogs.empty? %>
+    <% if @user.blogs.blank? %>
         <%= "You do not have any blogs on your list."%><a href='/blogs/new' class="button"><br>Add a Blog!</a>
     <% else %>    
         <p><% @user.blogs.each do |blog| %><p><%= blog.title %></p>
