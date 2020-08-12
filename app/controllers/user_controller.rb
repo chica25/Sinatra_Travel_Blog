@@ -13,22 +13,23 @@ class UserController < ApplicationController
     # --new
     post '/users' do
         @user = User.create(params)
+        binding.pry
         session[:user_id] = @user.id
         redirect '/blogs'
     end
     #--
 
-    post '/signup' do
-        @user = User.new(params)
-        @user.save
-        #binding.pry
-        if @user.save
-            #session[:user_id] = @user.id
-            redirect '/blogs'
-        else
-            erb :'users/signup'
-        end
-    end
+    # post '/signup' do
+    #     @user = User.new(params)
+    #     @user.save
+    #     #binding.pry
+    #     if @user.save
+    #         #session[:user_id] = @user.id
+    #         redirect '/blogs'
+    #     else
+    #         erb :'users/signup'
+    #     end
+    # end
 
     get '/login' do
        if user_logged_in
