@@ -2,9 +2,6 @@ require './config/environment'
 require 'pry'
 class UserController < ApplicationController
 
-
-    #index action
-    
     #new action(view for from that will create)
     get '/signup' do
         erb :'/users/signup'
@@ -13,7 +10,6 @@ class UserController < ApplicationController
     # --new
     post '/users' do
         @user = User.create(params)
-        #binding.pry
         session[:user_id] = @user.id
         redirect '/blogs'
     end
@@ -27,10 +23,8 @@ class UserController < ApplicationController
 end
 
     post '/login' do
-        binding.pry
         @user = User.find_by(email: params[:email])
         if @user && @user.authenticate(params[:password])
-            # binding.pry
             session[:user_id] = @user.id
             redirect '/blogs'
         else
