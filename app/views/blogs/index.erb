@@ -1,10 +1,9 @@
-<h3>This displays all blogs</h3>
+<h3>Welcome back, <%= @user.user_name %></h3>
 
     <% if @user.blogs.empty? %>
-        <%= "You do not have any blogs on your list."%><a href='/blogs/new' class="button">Add a Blog!</a>
+        <%= "You do not have any blogs on your list."%><a href='/blogs/new' class="button"><br>Add a Blog!</a>
     <% else %>    
-        <% @user.blogs.each do |blog| %><p><%= blog.title %></p>
-        <% @user.blogs.each do |blog| %><p><%= blog.title %></p>
+        <p><% @user.blogs.each do |blog| %><p><%= blog.title %></p>
         <form action="/blogs/<%= blog.id %>/delete" method="POST">           
         <input id="hidden" type="hidden" name="_method" value="DELETE">
         <input type="submit" value="X"> 

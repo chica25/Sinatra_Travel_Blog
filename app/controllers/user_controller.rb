@@ -14,28 +14,28 @@ class UserController < ApplicationController
         @user = User.new(params)
         if @user.save
             session[:user_id] = @user.id
-            redirect to '/blogs/'
+            redirect to '/blogs'
         else
             erb :'users/signup'
         end
     end
 
-    get '/login' do
-       if user_logged_in
-        redirect to '/login'
-       else
-        erb :'/users/login'
-    end
-end
+#     get '/login' do
+#        if user_logged_in
+#         redirect to '/login'
+#        else
+#         erb :'/users/login'
+#     end
+# end
 
     post '/login' do
         user = User.find_by(email: params[:email])
-        if @user && user.authenticate(params[:password])
-            binding.pry
-            session[:user_id] = @user.id
-            redirect to '/blogs/'
+        if user && user.authenticate(params[:password])
+            #binding.pry
+            session[:user_id] = user.id
+            redirect to '/blogs'
         else
-            @error = 'invalid login. Please try again.'
+            @error = 'Invalid login. Please try again.'
             erb :'/users/login'
         end
     end
