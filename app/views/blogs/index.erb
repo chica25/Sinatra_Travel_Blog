@@ -4,6 +4,11 @@
         <%= "You do not have any blogs on your list."%><a href='/blogs/new' class="button">Add a Blog!</a>
     <% else %>    
         <% @user.blogs.each do |blog| %><p><%= blog.title %></p>
+        <% @user.blogs.each do |blog| %><p><%= blog.title %></p>
+        <form action="/blogs/<%= blog.id %>/delete" method="POST">           
+        <input id="hidden" type="hidden" name="_method" value="DELETE">
+        <input type="submit" value="X"> 
+        </form>
     <% end %>
 <% end %>
 

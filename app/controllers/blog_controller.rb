@@ -6,7 +6,7 @@ class BlogController < ApplicationController
   get '/blogs' do
      @user = current_user
      @blogs = Blog.all #=> shows who is the current user
-      erb :'/blogs/index'
+      erb :'/blogs/index/'
     end
 
   # new action(view form that will create)
@@ -50,13 +50,20 @@ class BlogController < ApplicationController
   # delete action
   # side note - Users can only delete records that belong to them
   #delete '/blogs/:id' do
-    delete '/blogs/:id' do
+
+#     delete '/blogs/:id' do
+#     @blog = Blog.find_by_id(params[:id])
+#     @blog.destroy
+#     redirect '/blogs'
+#   end
+# end
+
+  delete '/blogs/:id/delete' do
     @blog = Blog.find_by_id(params[:id])
     @blog.destroy
     redirect '/blogs'
   end
 end
-
 
 
 
