@@ -1,7 +1,7 @@
 require './config/environment'
 
 class UserController < ApplicationController
-#add validations here
+
 
     #index action
     
@@ -11,29 +11,33 @@ class UserController < ApplicationController
     end
 
     post '/signup' do
+        #binding.pry
         @user = User.new(params)
+        @user.save
+        #binding.pry
         if @user.save
             session[:user_id] = @user.id
-            redirect to '/blogs'
+            redirect '/blogs'
         else
             erb :'users/signup'
         end
     end
 
-#     get '/login' do
-#        if user_logged_in
-#         redirect to '/login'
-#        else
-#         erb :'/users/login'
-#     end
-# end
+    get '/login' do
+       if user_logged_in
+            redirect '/blogs'
+       else
+        erb :'/users/login'
+    end
+end
 
     post '/login' do
-        user = User.find_by(email: params[:email])
-        if user && user.authenticate(params[:password])
+        binding.pry
+        @user = User.find_by(email: params[:email])
+        if @user && @user.authenticate(params[:password])
             #binding.pry
-            session[:user_id] = user.id
-            redirect to '/blogs'
+            session[:user_id] = @user.id
+            redirect '/blogs'
         else
             @error = 'Invalid login. Please try again.'
             erb :'/users/login'
@@ -41,9 +45,11 @@ class UserController < ApplicationController
     end
 
     get '/logout' do
-        if user_logged_in
+        if !!user_logged_in
             session.clear
-            redirect to '/'
+            erb :"users/login"
+        else   
+            redirect '/'
         end
     end
 end

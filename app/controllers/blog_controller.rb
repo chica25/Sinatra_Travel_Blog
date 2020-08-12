@@ -18,9 +18,8 @@ class BlogController < ApplicationController
   # create action
   post '/blogs' do
     @blog = current_user.blogs.create(title: params[:title], location: params[:location], description: params[:description], image_url: params[:image_url])
-    redirect to "/blogs/#{@blog.id}" #=> a response to the original post request
+    redirect "/blogs/#{@blog.id}" #=> a response to the original post request
   end
-
 
   # show action
   get '/blogs/:id' do
@@ -29,7 +28,7 @@ class BlogController < ApplicationController
     if @blog 
       erb :'/blogs/show'
     else
-      redirect to '/blogs/'
+      redirect '/blogs/'
     end
   end
 
@@ -43,20 +42,8 @@ class BlogController < ApplicationController
     @blog = Blog.find_by_id(params[:id])
     params.delete(:_method)
     @blog.update(params)
-    redirect to "/blogs/#{@blog.id}"
-    end 
-  
-  
-  # delete action
-  # side note - Users can only delete records that belong to them
-  #delete '/blogs/:id' do
-
-#     delete '/blogs/:id' do
-#     @blog = Blog.find_by_id(params[:id])
-#     @blog.destroy
-#     redirect '/blogs'
-#   end
-# end
+    redirect "/blogs/#{@blog.id}"
+  end 
 
   delete '/blogs/:id/delete' do
     @blog = Blog.find_by_id(params[:id])
