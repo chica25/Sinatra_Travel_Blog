@@ -23,9 +23,9 @@ class UserController < ApplicationController
        if user_logged_in
             redirect '/blogs'
        else
-        erb :'/users/login'
+         erb :'/users/login'
+        end
     end
-end
 
     post '/login' do
         @user = User.find_by(email: params[:email])
