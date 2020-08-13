@@ -8,10 +8,15 @@ class UserController < ApplicationController
     end
 
     # --new
-    post '/users' do
+    # post '/users' do
+    #     @user = User.create(params)
+    #     session[:user_id] = @user.id
+    #     redirect '/login'
+    #end
+    post '/signup' do
         @user = User.create(params)
         session[:user_id] = @user.id
-        redirect '/blogs'
+        redirect '/login'
     end
 
     get '/login' do
@@ -24,9 +29,9 @@ end
 
     post '/login' do
         @user = User.find_by(email: params[:email])
-        if @user && @user.authenticate(params[:password])
-            session[:user_id] = @user.id
-            redirect '/blogs'
+       if @user && @user.authenticate(params[:password])
+           session[:user_id] = @user.id
+           redirect '/blogs'
         else
             @error = 'Invalid login. Please try again.'
             erb :'/users/login'
@@ -34,12 +39,9 @@ end
     end
 
     get '/logout' do
-        if !!user_logged_in
-            session.clear
-            erb :"users/login"
-        else   
-            redirect '/'
-        end
+        # !!user_logged_in
+        session.clear
+        redirect '/login'
     end
 end
 

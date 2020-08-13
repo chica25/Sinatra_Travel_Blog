@@ -4,10 +4,14 @@ class BlogController < ApplicationController
  
  # index action
   get '/blogs' do
-     @user = current_user
+   if !user_logged_in
+      redirect '/login'
+   else
+    @user = current_user
      @blogs = Blog.all #=> shows who is the current user
       erb :'/blogs/index'
     end
+  end
 
   # new action(view form that will create)
   get '/blogs/new' do
