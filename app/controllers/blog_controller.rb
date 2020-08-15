@@ -77,18 +77,26 @@ class BlogController < ApplicationController
 # Update
 # Make a PATCH request to '/blog/:id'
 
+  patch '/blogs/:id' do
+    @blog = Blog.find_by_id(params[:id])
+    params.destroy(:_method)
+    @blog.update(params)
+      redirect "/blogs/#{@blog.id}"
+    
+  end 
+
   # patch '/blogs/:id' do
   #   @blog = Blog.find_by_id(params[:id])
-  #   params.delete(:_method)
-  #   @blog.update(params)
-  #     redirect "/blogs/#{@blog.id}"
-   
-  # end 
-
-  patch '/' do
-    
-  end
-
+  #   if !@blog.title.empty? 
+  #     @blog.update(params)
+  #     redirect '/blogs/edit'
+  #   else
+  #     @error = "The title is required. Please try again."
+  #       erb :'/blogs/new'
+  #   end
+  #    @blog.update(title: params[:title], location: params[:location], description: params[:description], image_url: params[:image_url])
+  # end
+  
 # DESTROY 
 # Make a DELETE request to '/blogs/:id'
   delete '/blogs/:id/delete' do
@@ -100,13 +108,6 @@ end
 
 
 # --- end of code----
-
-
-
-
-# READ
-
-
 
 
 

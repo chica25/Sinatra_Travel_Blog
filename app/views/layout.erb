@@ -10,15 +10,22 @@
     <link rel="stylesheet" href="/stylesheets/main.css" />
   </head>
   <body>
-  <div>
+    <div>
+     
+
+
+
+    </div>
+
+<div>
     <% if user_logged_in %>
-       <p><a href='/blogs'><br></a>
-         <a href="/blogs/new">Add a Blog</a> 
+     <div><a href='/blogs'>Blogs</a></div>
+         <a href="/blogs/new">Create a Blog</a> 
           <a href="/logout">Logout</a>
       </p>     
       <% else %>
           <a href="/login">Login</a>
-          <a href="/signup">Sign Up</a>
+          <a href="/signup">Signup</a>
     <% end %>
 </div>
     <nav>

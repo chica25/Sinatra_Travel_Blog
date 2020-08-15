@@ -7,10 +7,22 @@ class UserController < ApplicationController
         erb :'/users/signup'
     end
     
+    # post '/signup' do
+    #     @user = User.create(params)
+    #     session[:user_id] = @user.id
+    #     redirect '/login'
+    # end
+
     post '/signup' do
-        @user = User.create(params)
-        session[:user_id] = @user.id
-        redirect '/login'
+        @user = User.new(params)
+        if @user.user_name.blank? || @user.password.blank?
+            @error = "Please sign in"
+            erb :'users/signup'
+        else
+            @user.save
+            session[:user_id] = @user.id
+            redirect '/blogs'
+        end
     end
 
     get '/login' do

@@ -6,7 +6,7 @@ end
 
 ActiveRecord::Base.logger = Logger.new(STDOUT)
 
-use Rack::MethodOverride 
+use Rack::MethodOverride # is a method override for the Path, Put and Delete request
 use UserController
 use BlogController
 run ApplicationController
