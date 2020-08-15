@@ -1,8 +1,14 @@
 <!-- design page that displays the info about blog -->
-
-<p><%= @blog.title %></p>
-<p><%= @blog.location %></p>
-<p><%= @blog.description %></p>
-<p><%= @blog.image_url %></p>
-<p><%= @message %></p>
 <a href="/blogs">back to all blogs</a>
+<br><br>
+<b>Title: </b> <%= @blog.title %>
+<br>
+<b>Location: </b> <%= @blog.location %>
+<br>
+<b>Description: </b> <%= @blog.description %>
+<br>
+<b>Image URL: </b> <%= @blog.image_url %>
+<br>
+<%= @message %>
+
+

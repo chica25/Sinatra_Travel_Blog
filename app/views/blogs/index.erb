@@ -1,21 +1,22 @@
 
-<h3>Welcome back, <%= @user.user_name %></h3>
+<h3>Welcome back, <%= @user.user_name.capitalize %></h3>
+<a href="/blogs"></a>
     <% if @user.blogs.blank? %>
-        <%= "You do not have any blogs on your list."%><a href='/blogs/new' class="button"><br> Add a Blog!</a>
-    <% else %>    
-        <% @user.blogs.each do |blog| %><%= blog.title %>
+        <%= "You do not have any blogs on your list."%> <a href='/blogs/new' class="button"><br> Add a Blog!</a>
+    <% else %>   
+        <br>    
+       <% @user.blogs.each do |blog| %><%= "#{blog.title}"%>
+        <br> 
+        <a href="/blogs/<%= blog.id %>/edit"><button>Edit</button></a>
+        <br>   
         <form action="/blogs/<%= blog.id %>/delete" method="POST">           
         <input id="hidden" type="hidden" name="_method" value="DELETE">
-        <input type="submit" value="X"> 
+        <input type="submit" value="Delete"> 
         </form>
-        <a href="/blogs/<%= blog.id %>/edit"><button>Edit Blog</button></a>
-        <a href="/blogs/new">Add a Blog</a>
-       
+
     <% end %>
 <% end %>
 
 
-    <form action="/logout" method="POST">
-    <a href="/logout">Logout</a>
-    </form>
+
 
