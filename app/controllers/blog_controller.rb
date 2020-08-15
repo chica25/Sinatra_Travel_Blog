@@ -10,7 +10,8 @@ class BlogController < ApplicationController
   #-- my code----
  #index action
   get '/blogs' do
-    if !user_logged_in
+    #binding.pry
+    if !user_logged_in?
         redirect '/login'
     else
       @user = current_user
@@ -78,10 +79,15 @@ class BlogController < ApplicationController
 # Make a PATCH request to '/blog/:id'
 
   patch '/blogs/:id' do
-    @blog = Blog.find_by_id(params[:id])
-    params.destroy(:_method)
-    @blog.update(params)
-      redirect "/blogs/#{@blog.id}"
+    if user_logged_in?
+      @blog = Blog.find_by_id(params[:id])
+      params.destroy(:_method)
+      @blog.update(params)
+        redirect "/blogs/#{@blog.id}"
+    else
+      @error = "Please try again"
+      erb :'/blogs/login'
+    end
     
   end 
 

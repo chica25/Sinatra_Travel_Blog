@@ -15,8 +15,11 @@ class UserController < ApplicationController
 
     post '/signup' do
         @user = User.new(params)
-        if @user.user_name.blank? || @user.password.blank?
+        if @user.user_name.blank? || @user.password.blank? 
             @error = "Please sign in"
+            erb :'users/signup'
+        elsif User.find_by(user_name: @user.user_name)
+            @error = "Username already exist. Please try again"
             erb :'users/signup'
         else
             @user.save
@@ -26,7 +29,7 @@ class UserController < ApplicationController
     end
 
     get '/login' do
-       if user_logged_in
+       if user_logged_in?
             redirect '/blogs'
        else
          erb :'/users/login'
@@ -57,9 +60,11 @@ class UserController < ApplicationController
         end
     end
 
+
     get '/logout' do
         # !!user_logged_in
-        session.clear
+        #session.clear
+        logout!
         redirect '/login'
     end
 end
