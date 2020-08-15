@@ -7,26 +7,39 @@ class UserController < ApplicationController
         erb :'/users/signup'
     end
     
+    # -- code 1
     # post '/signup' do
     #     @user = User.create(params)
     #     session[:user_id] = @user.id
     #     redirect '/login'
     # end
+    # -- code 2
 
     post '/signup' do
         @user = User.new(params)
-        if @user.user_name.blank? || @user.password.blank? 
-            @error = "Please sign in"
-            erb :'users/signup'
-        elsif User.find_by(user_name: @user.user_name)
-            @error = "Username already exist. Please try again"
-            erb :'users/signup'
+        if !@user.save #=> if user not save it shows error
+            @error = @user.errors.full_messages
+                erb :'users/signup'
         else
-            @user.save
             session[:user_id] = @user.id
-            redirect '/blogs'
+                redirect '/blogs'
         end
     end
+            
+        #if @user.email.blank? || @user.password.blank? 
+        #     @error = "Please sign in"
+        #     erb :'users/signup'
+        # elsif User.find_by(email: params[:email]) && @user.authenticate(params[:password])
+        #     @error = "Username already exist. Please try again"
+        #     erb :'users/signup'
+        # else
+        #     @user.save
+        #     session[:user_id] = @user.id
+        #     redirect '/blogs'
+        # end
+   
+    # @errors = @volunteer.errors.full_messages
+    
 
     get '/login' do
        if user_logged_in?
@@ -56,6 +69,7 @@ class UserController < ApplicationController
         else
             params["email"].blank? || params["password"].blank?
             @error = "Invalid email and password. Please try again."
+            #@error = @user.errors.full_messages
                 erb :'/users/login'
         end
     end
@@ -65,7 +79,7 @@ class UserController < ApplicationController
         # !!user_logged_in
         #session.clear
         logout!
-        redirect '/login'
+        redirect '/'
     end
 end
 

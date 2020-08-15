@@ -1,4 +1,8 @@
-input[type=text]{
+.other input {
+    text-align: right;
+    }
+
+.other input[type=text]{
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px;
      border-radius: 20px;
@@ -9,7 +13,7 @@ input[type=text]{
      padding-left: 10px;
     }
     
-input[type=text]:focus {
+.other input[type=text]:focus {
      outline: none;
      border: 1px solid #a0d18c;
      color: #2d9fd9;

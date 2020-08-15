@@ -1,5 +1,11 @@
-<br><br>
-<form action="/signup" method="POST">
+
+ <% if @error %>
+        <%= @error %>
+    <br><br>
+    <% end %> 
+    
+
+<form class="other" action="/signup" method="POST">
     <label for="name">Username:</label>
     <input type="text" name="user_name" id="user_name" placeholder="username" >
     <label for="email">Email:</label>

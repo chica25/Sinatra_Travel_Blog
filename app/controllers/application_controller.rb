@@ -28,6 +28,13 @@ end
         !!current_user 
     end
 
+    # def user_login(email)
+    #   if user = User.find_by(email: params[:email)
+    #     session[:email] = user.email
+    #   else
+    #     redirect '/login'
+    # end
+
     def logout!
       session.clear
     end

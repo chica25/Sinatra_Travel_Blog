@@ -69,7 +69,7 @@ class BlogController < ApplicationController
 # Edit
 # make a GET request to '/blogs/:id/edit' - Can make changes to the recipe
   get '/blogs/:id/edit' do
-        # binding.pry
+         #binding.pry
     @blog = Blog.find_by_id(params[:id])
       erb :'/blogs/edit'
   end
@@ -80,12 +80,13 @@ class BlogController < ApplicationController
 
   patch '/blogs/:id' do
     if user_logged_in?
+      #binding.pry
       @blog = Blog.find_by_id(params[:id])
-      params.destroy(:_method)
+      params.delete(:_method)
       @blog.update(params)
         redirect "/blogs/#{@blog.id}"
     else
-      @error = "Please try again"
+      @errors = "Please try again"
       erb :'/blogs/login'
     end
     
