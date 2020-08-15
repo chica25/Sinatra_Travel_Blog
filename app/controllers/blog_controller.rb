@@ -23,9 +23,13 @@ class BlogController < ApplicationController
 # NEW
 # Make a GET request tp '/blogs/new' - to render the orm
   get '/blogs/new' do
-    @message = session[:message]
+   if user_logged_in?
+     @message = session[:message]
       erb :'/blogs/new'
+   else
+    redirect to '/'
   end
+end
 
  
 # CREATE

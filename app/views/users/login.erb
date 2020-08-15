@@ -2,22 +2,22 @@
  <% if @error %>
         <p><%= @error %></p>
     <% end %> 
-  <p>
-    <form action="/login" method="POST">
-    <table style='text-align: left'>
+<p>
+ <table style='text-align: left'>
+  <form action="/login" method="POST">
+   
     
-    <tr>
-        <td><label for="email">Email:</label><td>
-        <td><input type="text" name="email" id="email" placeholder="email" required></td>
-    </tr>
-
-    <tr>
-        <td><label for="password">Password:</label><td>
-        <td><input type="password" name="password" id="password" placeholder="password" required><td>
-    </tr>
-    </table>
-    <br>
-        <input type="reset" value="Reset" style="text-align: left"/>
-        <input type="submit" value="Login" style="text-align: left"/>
+            <tr>
+                <td><label for="email">Email:</label></td>
+                <td><input type="text" name="email" id="email" placeholder="Write your e-mail.." required></td>
+            </tr>
+            <tr>
+                <td><label for="password">Password:</label></td>
+                <td><input type="password" name="password" id="password" placeholder="password" required></td>
+            </tr>
+         </table>
+            <br>
+                <input type="reset" value="Reset" style="text-align: left"/>
+                <input type="submit" value="Login" style="text-align: left"/>
     </form>
 </p>

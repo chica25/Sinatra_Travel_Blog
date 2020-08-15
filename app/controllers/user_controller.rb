@@ -37,7 +37,7 @@ class UserController < ApplicationController
         #     session[:user_id] = @user.id
         #     redirect '/blogs'
         # end
-   
+    #end
     # @errors = @volunteer.errors.full_messages
     
 
@@ -68,8 +68,8 @@ class UserController < ApplicationController
             redirect '/blogs'
         else
             params["email"].blank? || params["password"].blank?
+           # @error = @user.errors.full_messages
             @error = "Invalid email and password. Please try again."
-            #@error = @user.errors.full_messages
                 erb :'/users/login'
         end
     end
