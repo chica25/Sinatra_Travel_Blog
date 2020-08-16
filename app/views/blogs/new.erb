@@ -1,26 +1,26 @@
 <h1><% if @message %></h1>
 <p><%= @message %></p>
-<%end%>
+<% end %>
 <h2>This is a new blog form</h2>
-<p><a href='/blogs'><br>All Blogs</a></p>
+<!--<p><a href='/blogs'><br>All Blogs</a></p>-->
 
 <p>
     <form action="/blogs" method="POST">
      <table style='text-align: left'>  
             <tr>
-        <label for="title">Title:</label>
+        <label for="title">Title: </label>
         <input type="text" name="title" placeholder="title" id="title">
         <br><br>
-        <label for="location">Location:</label>
+        <label for="location">Location: </label>
         <input type="text" name="location" placeholder="Location" id="location">
         <br><br>
-        <label for="description">Description:</label>
+        <label for="description">Description: </label>
         <!--<input type="text" name="description" placeholder="write a description..">-->
         <textarea type="text" name="description" placeholder="write a message" id="description"></textarea>
         <br><br>
-        <label for="image_url">Image URL:</label>
-        <input type="text" name="image_url" placeholder="url" id="image_url">
-        <!--<button type="submit">Add URL</button>-->
+        <label for="text">Image </label>
+        <input type="text" name="image_url" placeholder="url" id="text" value="">
+        <button type="submit">Add URL</button>
         <br><br>
         <input type="submit" value="submit">
     
@@ -28,3 +28,10 @@
 
 </p>
     
+    <form action="/action">
+  <input type="file" id="myFile" name="filename">
+  <input type="submit">
+</form>
+
+</body>
+</html>

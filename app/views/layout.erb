@@ -2,15 +2,13 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
-
     <title>Travel Log</title>
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="stylesheet" href="/stylesheets/main.css" />
   </head>
  <style>
- form {
+ /*form {
   width: 100px
 }
 
@@ -32,35 +30,44 @@ input:focus, textarea:focus {
   box-shadow: 0 0 4px rgba(255, 0, 0, 0.5);
   border: 1px solid #ddd;
 }
-
+*/
 </style>
 
   <body>
-    <div>
-     
-    </div>
-
-
    <div class="wrapper">
-
    <div class="nav">
-    <% if user_logged_in? %>
-     <div><a href='/'>Home</a></div>
-       <div><a href='/blogs'>View all blogs</a></div>
-         <a href='/blogs/new'>Create a Blog</a> 
-          <a href='/logout'>Logout</a>  
-    <% else %>
-          <a href='/login'>Login</a> <br>
-          <a href='/signup'>Signup</a>
-    <% end %>
+    <!--<div><a href='/blogs/new'>Create a Blog</a></div>-->
+
+<!-- current user -->
+
+<div>
+   <% if user_logged_in? %>
+      <h3>Welcome,  <%= @user.user_name.capitalize %></h3>
+      <a href='/blogs'>All Blogs</a>
+      <a href='/logout'>Logout</a> 
+ <% end %>
+ </div>
+
+ <!-- new user -->
+
+ <div>
+  <% if !user_logged_in? %>
+      <a href='/login'>Login</a> <br>
+      <a href='/signup'>Signup</a>
+  <% end %>
+</div>
+
+<div>
 </div>
 <br>
         <%= yield %>
         <br>
-       
-        <small>&copy; 2020 <strong>TravelLog</strong></small>
-        </footer>
-    </div>
+
+    <p>
+      <footer class="branding">
+      <small>&copy; 2020 <strong>TravelLog</strong></small>
+      </footer>
+    </p>
   
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 

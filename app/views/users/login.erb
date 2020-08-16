@@ -1,13 +1,14 @@
 <h2>Please login</h2>
- <% if @error %>
-        <p><%= @error %></p>
+    <% if @error %>
+ <p><%= @error %></p>
+ 
     <% end %> 
     <p>
-     <form class="" action="/login" method="POST">
+     <form class="other" action="/login" method="POST">
         <table style='text-align: left'>
             <tr>
             <td><label for="email">Email:</label></td>
-            <td><input type="text" name="email" id="email" placeholder="Write your e-mail.." id="email" required></td>
+            <td><input type="text" name="email" id="email" placeholder="Write your e-mail.." id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required></td>
             </tr>
             <tr>
             <td><label for="password">Password:</label></td>

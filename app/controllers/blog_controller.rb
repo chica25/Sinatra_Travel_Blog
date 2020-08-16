@@ -2,14 +2,8 @@ require './config/environment'
 
 class BlogController < ApplicationController
 
-
-  # before do 
-  #   user_logged_in
-  # end
-
  #index action
   get '/blogs' do
-    #binding.pry
     if !user_logged_in?
         redirect to '/login'
     else
@@ -29,31 +23,18 @@ class BlogController < ApplicationController
     redirect to '/'
   end
 end
-
  
 # CREATE
 # make a POST request to '/blogs' - Submits the form; That's how we create a new blog
   post '/blogs' do
     @blog = current_user.blogs.create(title: params[:title], location: params[:location], description: params[:description], image_url: params[:image_url], user_id: current_user.id)
-   #if !@blog.title.empty? 
+   if !@blog.title.empty? 
    redirect to "/blogs/#{@blog.id}" #=> a response to the original post request
-  # else
-  # @message = "The title is required. Please try again."
+  else
+   @message = "The title is required. Please try again."
      erb :'/blogs/new'
   end
-#end
-
-  # post '/blogs' do
-  #   @blog = Blog.new(title: params[:title])
-  # if !@blog.title.empty? 
-  #   @blog.save
-  #   redirect "/blogs/#{@blog.id}"
-  # else
-  #   @message = "The title is required. Please try again."
-  #   erb :'/blogs/new'
-  #   end
-  # end
-
+end
 
 # SHOW
 # make a GET request to '/blogs/:id' - This is a dynamic route
@@ -67,7 +48,6 @@ end
     end
   end
 
-
 # EDIT
 # make a GET request to '/blogs/:id/edit' - Can make changes to the recipe
   get '/blogs/:id/edit' do
@@ -76,10 +56,8 @@ end
       erb :'/blogs/edit'
   end
 
-
 # UPDATE
 # Make a PATCH request to '/blog/:id'
-
   patch '/blogs/:id' do
     if user_logged_in?
       #binding.pry
@@ -90,21 +68,8 @@ end
     else
       @errors = "Please try again"
       erb :'/blogs/login'
-    end
-    
+    end 
   end 
-
-  # patch '/blogs/:id' do
-  #   @blog = Blog.find_by_id(params[:id])
-  #   if !@blog.title.empty? 
-  #     @blog.update(params)
-  #     redirect '/blogs/edit'
-  #   else
-  #     @error = "The title is required. Please try again."
-  #       erb :'/blogs/new'
-  #   end
-  #    @blog.update(title: params[:title], location: params[:location], description: params[:description], image_url: params[:image_url])
-  # end
   
 # DESTROY 
 # Make a DELETE request to '/blogs/:id'
@@ -115,8 +80,6 @@ end
   end
 end
 
-
-# --- end of code----
 
 
 

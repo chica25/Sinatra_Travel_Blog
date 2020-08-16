@@ -6,41 +6,33 @@ class UserController < ApplicationController
     get '/signup' do
         erb :'/users/signup'
     end
-    
-    # -- code 1
-    # post '/signup' do
-    #     @user = User.create(params)
-    #     session[:user_id] = @user.id
-    #     redirect '/login'
-    # end
-    # -- code 2
+
 
     post '/signup' do
         @user = User.new(params)
-        if !@user.save #=> if user not save it shows error
-            @error = @user.errors.full_messages
-                erb :'users/signup'
+    #     if !@user.save #=> if user not save it shows error
+    #         @error = @user.errors.full_messages
+    #             erb :'users/signup'
+    #     else
+    #         session[:user_id] = @user.id
+    #             redirect to '/blogs'
+    #     end
+    # end
+        if @user.email.blank? || @user.password.blank? 
+            @error = "Please sign in"
+           # @error = @user.errors.full_messages
+            erb :'users/signup'
+        elsif User.find_by(email: params[:email]) && @user.authenticate(params[:password])
+            @error = "Username already exist. Please try again"
+            #@error = @user.errors.full_messages
+            erb :'users/signup'
         else
+            @user.save
             session[:user_id] = @user.id
-                redirect to '/blogs'
+            redirect '/blogs'
         end
     end
-            
-        #if @user.email.blank? || @user.password.blank? 
-        #     @error = "Please sign in"
-        #     erb :'users/signup'
-        # elsif User.find_by(email: params[:email]) && @user.authenticate(params[:password])
-        #     @error = "Username already exist. Please try again"
-        #     erb :'users/signup'
-        # else
-        #     @user.save
-        #     session[:user_id] = @user.id
-        #     redirect '/blogs'
-        # end
-    #end
-    # @errors = @volunteer.errors.full_messages
-    
-
+  
     get '/login' do
        if user_logged_in?
             redirect to '/blogs'
@@ -48,7 +40,7 @@ class UserController < ApplicationController
          erb :'/users/login'
         end
     end
-    # --First code -
+
      post '/login' do
         @user = User.find_by(email: params[:email])
        if @user && @user.authenticate(params[:password])
@@ -56,34 +48,14 @@ class UserController < ApplicationController
            redirect '/blogs'
         else
             @error = 'Invalid login. Please try again.'
+            #@error = @user.errors.full_messages
             erb :'/users/login'
         end
     end
 
-    # ---second code --
-    # post '/login' do 
-    #     @user = User.find_by(email: params[:email])
-    #     if @user = User.find_by(email: params[:email]) && @user.authenticate(params[:password])
-    #        session[:user_id] = @user.id
-    #        binding.pry
-    #        
-    #     else
-    #         params["email"].blank? || params["password"].blank?
-    #        # @error = @user.errors.full_messages
-    #         @error = "Invalid email and password. Please try again."
-    #             erb :'/users/login'
-    #     end
-    # end
-
-    # -- Third code --
-    post '/login' do 
-        @user = User.find_by(email: params[:email])
-        if @user && @user.authenticate(params[:password])
-          session[:user_id] = @user.id #=> Creating a key value pair inside a session hash.
-          redirect to "/users/#{@user.id}"
-        else
-            redirect '/blogs'
-        end
+    post '/login' do
+        login(params[:email], params[:password])
+        redirect to '/login'
     end
 
     get '/users/:id' do
@@ -91,9 +63,11 @@ class UserController < ApplicationController
     end
 
     get '/logout' do
-        logout!
-        redirect to '/'
-    end
-end
-
+         #binding.pry
+         logout!
+         #binding.pry
+         redirect to '/'
+     end
+ end
+ 
 
