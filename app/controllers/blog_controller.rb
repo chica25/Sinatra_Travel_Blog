@@ -7,12 +7,11 @@ class BlogController < ApplicationController
   #   user_logged_in
   # end
 
-  #-- my code----
  #index action
   get '/blogs' do
     #binding.pry
     if !user_logged_in?
-        redirect '/login'
+        redirect to '/login'
     else
       @user = current_user
       @blogs = Blog.all.reverse #=> shows who is the current user
@@ -24,7 +23,7 @@ class BlogController < ApplicationController
 # Make a GET request tp '/blogs/new' - to render the orm
   get '/blogs/new' do
    if user_logged_in?
-     @message = session[:message]
+    @message = session[:message] #=> user logged in with the user id key is equal to the user's id
       erb :'/blogs/new'
    else
     redirect to '/'
@@ -35,9 +34,9 @@ end
 # CREATE
 # make a POST request to '/blogs' - Submits the form; That's how we create a new blog
   post '/blogs' do
-    @blog = current_user.blogs.create(title: params[:title], location: params[:location], description: params[:description], image_url: params[:image_url])
+    @blog = current_user.blogs.create(title: params[:title], location: params[:location], description: params[:description], image_url: params[:image_url], user_id: current_user.id)
    #if !@blog.title.empty? 
-   redirect "/blogs/#{@blog.id}" #=> a response to the original post request
+   redirect to "/blogs/#{@blog.id}" #=> a response to the original post request
   # else
   # @message = "The title is required. Please try again."
      erb :'/blogs/new'
@@ -64,13 +63,12 @@ end
     if @blog 
         erb :'/blogs/show'
     else
-        redirect '/blogs'
+        redirect to '/blogs'
     end
   end
 
 
-# UPDATE 
-# Edit
+# EDIT
 # make a GET request to '/blogs/:id/edit' - Can make changes to the recipe
   get '/blogs/:id/edit' do
          #binding.pry
@@ -79,7 +77,7 @@ end
   end
 
 
-# Update
+# UPDATE
 # Make a PATCH request to '/blog/:id'
 
   patch '/blogs/:id' do
@@ -88,7 +86,7 @@ end
       @blog = Blog.find_by_id(params[:id])
       params.delete(:_method)
       @blog.update(params)
-        redirect "/blogs/#{@blog.id}"
+        redirect to "/blogs/#{@blog.id}"
     else
       @errors = "Please try again"
       erb :'/blogs/login'
@@ -113,7 +111,7 @@ end
   delete '/blogs/:id/delete' do
     @blog = Blog.find_by_id(params[:id])
     @blog.destroy
-      redirect '/blogs'
+      redirect to '/blogs'
   end
 end
 

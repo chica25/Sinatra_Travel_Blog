@@ -1,14 +1,16 @@
 <!-- design page that displays the info about blog -->
-<%= @message %>
+<h4><% if @message %></h3>
+<p><%= @message %></p>
+<%end%>
 <a href="/blogs">back to all blogs</a>
 <br><br>
-<b>Title:</b> <%= @blog.title %>
-<br>
-<b>Location:</b> <%= @blog.location %>
-<br>
-<b>Description:</b> <%= @blog.description %>
-<br>
-<b>Image URL:</b> <%= @blog.image_url %>
-
-
+<p>
+    Title: <%= @blog.title %>
+    <br>
+    Location: <%= @blog.location %>
+    <br>
+    Description: <%= @blog.description %>
+    <br>
+    Image URL: <%= @blog.image_url %>
+</p>
 

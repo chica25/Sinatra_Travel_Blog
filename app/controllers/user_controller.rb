@@ -1,5 +1,5 @@
 require './config/environment'
-require 'pry'
+
 class UserController < ApplicationController
 
     #new action(view for from that will create)
@@ -22,7 +22,7 @@ class UserController < ApplicationController
                 erb :'users/signup'
         else
             session[:user_id] = @user.id
-                redirect '/blogs'
+                redirect to '/blogs'
         end
     end
             
@@ -43,7 +43,7 @@ class UserController < ApplicationController
 
     get '/login' do
        if user_logged_in?
-            redirect '/blogs'
+            redirect to '/blogs'
        else
          erb :'/users/login'
         end
@@ -61,25 +61,38 @@ class UserController < ApplicationController
     # end
 
     # ---second code --
+    # post '/login' do 
+    #     @user = User.find_by(email: params[:email])
+    #     if @user = User.find_by(email: params[:email]) && @user.authenticate(params[:password])
+    #        session[:user_id] = @user.id
+    #        binding.pry
+    #        
+    #     else
+    #         params["email"].blank? || params["password"].blank?
+    #        # @error = @user.errors.full_messages
+    #         @error = "Invalid email and password. Please try again."
+    #             erb :'/users/login'
+    #     end
+    # end
+
+    # -- Third code --
     post '/login' do 
         @user = User.find_by(email: params[:email])
-        if @user = User.find_by(email: params[:email]) && @user.authenticate(params[:password])
-            session[:user_id] = @user.id
-            redirect '/blogs'
+        if @user && @user.authenticate(params[:password])
+          session[:user_id] = @user.id #=> Creating a key value pair inside a session hash.
+          redirect to "/users/#{@user.id}"
         else
-            params["email"].blank? || params["password"].blank?
-           # @error = @user.errors.full_messages
-            @error = "Invalid email and password. Please try again."
-                erb :'/users/login'
+            redirect '/blogs'
         end
     end
 
+    get '/users/:id' do
+        redirect to '/blogs'
+    end
 
     get '/logout' do
-        # !!user_logged_in
-        #session.clear
         logout!
-        redirect '/'
+        redirect to '/'
     end
 end
 

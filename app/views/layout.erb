@@ -40,9 +40,13 @@ input:focus, textarea:focus {
      
     </div>
 
-<div>
+
+   <div class="wrapper">
+
+   <div class="nav">
     <% if user_logged_in? %>
-     <div><a href='/blogs'>Home</a></div>
+     <div><a href='/'>Home</a></div>
+       <div><a href='/blogs'>View all blogs</a></div>
          <a href='/blogs/new'>Create a Blog</a> 
           <a href='/logout'>Logout</a>  
     <% else %>
@@ -50,12 +54,10 @@ input:focus, textarea:focus {
           <a href='/signup'>Signup</a>
     <% end %>
 </div>
-    <nav>
-
-      <div class="wrapper">
-    </nav>
+<br>
         <%= yield %>
-        <br><br>
+        <br>
+       
         <small>&copy; 2020 <strong>TravelLog</strong></small>
         </footer>
     </div>

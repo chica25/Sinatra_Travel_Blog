@@ -7,7 +7,7 @@ class ApplicationController < Sinatra::Base
     set :public_folder, 'public'
     set :views, 'app/views'
     enable :sessions
-    set :session_secret, "Dogs"
+    set :session_secret, "The Big Lebowski" #=> Set a session secret for extra security
   end
 
   get '/' do
@@ -27,14 +27,7 @@ end
     def user_logged_in?
         !!current_user 
     end
-
-    # def user_login(email)
-    #   if user = User.find_by(email: params[:email)
-    #     session[:email] = user.email
-    #   else
-    #     redirect '/login'
-    # end
-
+    
     def logout!
       session.clear
     end
