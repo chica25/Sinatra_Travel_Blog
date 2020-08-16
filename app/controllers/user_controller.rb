@@ -49,16 +49,16 @@ class UserController < ApplicationController
         end
     end
     # --First code -
-    # post '/login' do
-    #     @user = User.find_by(email: params[:email])
-    #    if @user && @user.authenticate(params[:password])
-    #        session[:user_id] = @user.id
-    #        redirect '/blogs'
-    #     else
-    #         @error = 'Invalid login. Please try again.'
-    #         erb :'/users/login'
-    #     end
-    # end
+     post '/login' do
+        @user = User.find_by(email: params[:email])
+       if @user && @user.authenticate(params[:password])
+           session[:user_id] = @user.id
+           redirect '/blogs'
+        else
+            @error = 'Invalid login. Please try again.'
+            erb :'/users/login'
+        end
+    end
 
     # ---second code --
     # post '/login' do 
