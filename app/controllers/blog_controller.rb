@@ -49,7 +49,6 @@ end
 # SHOW
 # make a GET request to '/blogs/:id' - This is a dynamic route
   get '/blogs/:id' do
-   
       @message = session[:message]
       @blog = Blog.find_by_id(params[:id])
       #@blog = Blog.find(params[:id])

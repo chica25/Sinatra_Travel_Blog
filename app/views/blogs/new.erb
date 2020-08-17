@@ -1,46 +1,31 @@
-<!DOCTYPE html>
-    <body> 
      <h2>Create new blog</h2>
-         <p><% if @message %></p>
-                <p><%= @message %></p>
+      <p>
+        <% if @message %>
+                <%= @message %>
             <% end %>
-            <div>
+            </p>
                 <form class="" action="/blogs" method="POST">
                     <table style='text-align: left'>  
                         <tr>
-                            <td>
-                            <label for="title">Title: </label>
-                            <input type="text" name="title" placeholder="Title" id="title">
-                            <br><br>
-                            </td>
+                            <td><label for="title">Title: </label></td>
+                            <td><input type="text" name="title" placeholder="Title" id="title"></td>
                         </tr>
                         <tr>  
-                            <td>
-                            <label for="location">Location: </label>
-                            <input type="text" name="location" placeholder="Location" id="location">
-                            </td>
-                            <br><br>
+                            <td><label for="location">Location: </label></td>
+                            <td><input type="text" name="location" placeholder="Location" id="location"></td>
                         </tr>
                         <tr>
-                            <td>
-                            <label for="description">Description: </label>
-                            <textarea type="text" name="description" placeholder="Write a description" id="description"></textarea>
-                            </td>
-                            <br><br>
+                            <td><label for="description">Description: </label></td>
+                            <td><textarea type="text" name="description" placeholder="Write a description" id="description"></textarea></td>
                         </tr>
                         <tr>
-                            <td>
-                            <label for="text">Image </label>
-                            <input type="text" name="image_url" placeholder="url" id="text" value="">
-                            <br><br>
-                            <input type="submit" name="" value="Submit Blog">
-                            </td>
+                            <td><label for="text">Image </label></td>
+                            <td><input type="text" name="image_url" placeholder="url" id="text" value=""></td>
+                            <td><input type="submit" name="" value="Submit Blog"></td>
                         </tr>
                     </table>
                 </form>
-            </div>
-    </body>
-</html>
+
     <!-- file upload 
     <form action="/action">
         <input type="file" id="myFile" name="filename">
