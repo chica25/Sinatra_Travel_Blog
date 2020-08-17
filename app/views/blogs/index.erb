@@ -1,10 +1,10 @@
-   <h2>All Blogs</h2>
+
    <% if @user.blogs.blank? %>
         <%= "You do not have any blogs on your list."%> 
         <b><a href='/blogs/new' class="button"><br> Add a Blog!</a></b>
-    <% else %>    
+  <% else %>    
+     <h2>All Blogs</h2>
       <% @user.blogs.each do |blog| %><br> 
-     
         <p><b>Title:</b> <%= blog.title %></p>
         <p><b>Location:</b> <%= blog.location %></p> 
         <p><b>Description:</b> <%= blog.description %></p>

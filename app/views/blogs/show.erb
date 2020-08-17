@@ -1,17 +1,12 @@
-<!-- design page that displays the info about blog 
- Displays the updated edits>
+
+<!-- renders the post of a specific blog-->
 <p><% if @message %></p>
 <p><%= @message %></p>
 <%end%>
     
-<%if current_user %>
-    <a href='/blogs'>back to all blogs<a>
-<%end%>
-<br><br>
-<p>-->
-<h2><New Blog></h2>
+<h2>New Blog</h2>
     <p> <%= @blog.title %></p>
     <p><%= @blog.location %></p>
     <p><%= @blog.description %></p>
-    <p><img src="<%= @blog.image_url %> />" height="400" width="600"></>  
+    <p><img src="<%= @blog.image_url %>" alt="<%= @blog.image_url %>" height="400" width="600">
 
