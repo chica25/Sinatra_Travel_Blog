@@ -42,7 +42,6 @@ input:focus, textarea:focus {
         <% end %> 
       </div>
 
-
       <div class="wrapper">
         <% if flash[:message] %>
             <h3 style="color:green;"><%= flash[:message] %></h3>
@@ -51,7 +50,7 @@ input:focus, textarea:focus {
 
         <div class="nav">
           <% if user_logged_in? %>
-          <h4>Welcome, <%= @user.user_name.capitalize %></h4> 
+          <h2>Welcome, <%= @user.user_name.capitalize %></h2> 
              <a href='/blogs'>All blogs</a>
               <a href='/blogs/new'>Create new Blog</a>
               <a href='/logout'>Logout</a> 

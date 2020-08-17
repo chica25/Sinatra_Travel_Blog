@@ -39,8 +39,9 @@ end
   post '/blogs' do
     #binding.pry
      @blog = current_user.blogs.create(title: params[:title], location: params[:location], description: params[:description], image_url: params[:image_url], user_id: current_user.id)
-  # if !@blog.present? 
-    #if !@blog.blank? 
+  #if !@blog.present? 
+   # if !@blog.blank? 
+   if @blog.save
    # if params[:title] != "" && params[:location] != "" && params[:description] != "" && params[:image_url] != ""
     flash[:message] = "Your blog is now posted!"
     redirect to "/blogs/#{@blog.id}" #=> a response to the original post request
@@ -49,7 +50,9 @@ end
   #  flash[:error] = "Please enter the right credentials."
   #    erb :'/blogs/new'
     else
-       flash[:error] = "Please enter details."
+      #binding.pry
+       #flash[:error] = "Please enter details."
+       flash[:error] = "Post not created: #{@blog.errors.full_messages.to_sentence}"
          erb :'/blogs/new'
   end
 end
