@@ -23,7 +23,7 @@ class BlogController < ApplicationController
   end
 
 # NEW
-# Make a GET request tp '/blogs/new' - to render the orm
+# Make a GET request tp '/blogs/new' - to render the form
   get '/blogs/new' do
    if user_logged_in?
     @message = session[:message] #=> user logged in with the user id key is equal to the user's id
@@ -36,6 +36,7 @@ end
 # CREATE
 # make a POST request to '/blogs' - Submits the form; That's how we create a new blog
   post '/blogs' do
+    #binding.pry
     @blog = current_user.blogs.create(title: params[:title], location: params[:location], description: params[:description], image_url: params[:image_url], user_id: current_user.id)
    if !@blog.title.empty? 
    redirect to "/blogs/#{@blog.id}" #=> a response to the original post request
@@ -62,7 +63,7 @@ end
   end
 
 # EDIT
-# make a GET request to '/blogs/:id/edit' - Can make changes to the recipe
+# make a GET request to '/blogs/:id/edit' - Can make changes to a blog
   get '/blogs/:id/edit' do
          #binding.pry
     @blog = Blog.find_by_id(params[:id])

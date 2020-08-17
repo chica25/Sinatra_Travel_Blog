@@ -12,9 +12,9 @@
         <p><img src="<%= blog.image_url %>" alt="<%= blog.image_url %>" height="400" width="600"></p>   
             <a href="/blogs/<%= blog.id %>/edit"><button>Edit</button></a>
             <br> <br>
-            <form action="/blogs/<%= blog.id %>/delete" method="POST">   
+            <form class="" action="/blogs/<%= blog.id %>/delete" method="POST">   
               <input id="hidden" type="hidden" name="_method" value="DELETE">
-              <input type="submit" value="Delete">     
+              <input type="Submit" value="Delete">     
             </form>       
     <% end %>
 <% end %>
