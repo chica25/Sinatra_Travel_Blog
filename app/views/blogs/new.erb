@@ -1,9 +1,4 @@
-     <h2>Create new blog</h2>
-      <p>
-        <% if @message %>
-                <%= @message %>
-            <% end %>
-            </p>
+     <h3>Create new blog</h3>
                 <form class="" action="/blogs" method="POST">
                     <table style='text-align: left'>  
                         <tr>
@@ -26,6 +21,18 @@
                     </table>
                 </form>
 
+                <p>
+                    <% if @message %>
+                        <%= @message %>
+                    <% end %>
+                </p>
+
+
+                    <% if flash[:error] %>
+                            <h3><%= flash[:error] %></h3>
+                        <% end %> 
+                    </div>
+                    
     <!-- file upload 
     <form action="/action">
         <input type="file" id="myFile" name="filename">

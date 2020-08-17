@@ -38,10 +38,11 @@ end
   post '/blogs' do
     #binding.pry
     @blog = current_user.blogs.create(title: params[:title], location: params[:location], description: params[:description], image_url: params[:image_url], user_id: current_user.id)
-   if !@blog.title.empty? 
+   if !@blog.blank? 
    redirect to "/blogs/#{@blog.id}" #=> a response to the original post request
   else
-   @message = "The title is required. Please try again."
+  # @error = "The title is required. Please try again."
+   flash[:error] = "Please enter credentials."
      erb :'/blogs/new'
   end
 end
@@ -79,7 +80,8 @@ end
       @blog.update(params)
         redirect to "/blogs/#{@blog.id}"
     else
-      @errors = "Please try again"
+      #@errors = "Please try again"
+      flash[:error] = "Please try again"
       erb :'/blogs/login'
     end 
   end 

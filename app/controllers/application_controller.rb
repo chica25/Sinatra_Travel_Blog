@@ -1,6 +1,5 @@
 require './config/environment'
 
-
 class ApplicationController < Sinatra::Base
 
 # has_secure_password - Adds methods to set and auhtenticate against a BCrypt password. This mechanism requires you to have a password_digest attribute. 
@@ -11,6 +10,7 @@ class ApplicationController < Sinatra::Base
     set :views, 'app/views'
     enable :sessions
     set :session_secret, "The Big Lebowski" #=> Set a session secret for extra security
+     register Sinatra::Flash
   end
 
   get '/' do
@@ -39,7 +39,6 @@ end
         !!current_user 
     end
 
-    
     def logout!
       session.clear
     end

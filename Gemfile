@@ -13,4 +13,5 @@ gem 'bcrypt'
 gem 'tux'
 gem 'dotenv'
 gem 'chartkick'
+gem 'sinatra-flash'
 

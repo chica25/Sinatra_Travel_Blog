@@ -1,5 +1,5 @@
 <!-- renders the post of a specific blog-->
-<h2>New Blog</h2>
+<h3>New Blog</h3>
     <p><b>Title:</b> <%= @blog.title %></p>
     <p><b>Location:</b> <%= @blog.location %></p>
     <p><b>Description:</b> <%= @blog.description %></p>
@@ -11,3 +11,11 @@
             <%= @message %>
         <%end%>
     </p>
+
+<!--
+    <div>
+        <% if flash[:error] %>
+            <h3><%= flash[:error] %></h3>
+        <% end %> 
+    </div>
+    -->

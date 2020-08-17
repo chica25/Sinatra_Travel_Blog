@@ -1,20 +1,16 @@
-<h2>Please login</h2>
-  <a href='/signup'>Sign Up</a>
-    <% if @error %>
-    <p><%= @error %></p>
  
-    <% end %> 
-
+    <h2>Please login</h2>
+    <a href='/signup'>Sign Up</a>
     <p>
      <form class="" class="other" action="/login" method="POST">
         <table style='text-align: left'>
             <tr>
             <td><label for="email">Email:</label></td>
-            <td><input type="text" name="email" id="email" placeholder="Write your e-mail.." id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required ></td>                                   
+            <td><input type="text" name="email" id="email" placeholder="Write your e-mail.." id="email" ></td>    <!-- pattern="[^ @]*@[^ @]*" -->                                
             </tr>
             <tr>
             <td><label for="password">Password:</label></td>
-            <td><input type="password" name="password" id="password" placeholder="password" id="password" required></td>
+            <td><input type="password" name="password" id="password" placeholder="password" id="password" ></td>
             </tr>
         </table>
             <br>
@@ -22,3 +18,9 @@
                 <input type="submit" value="Login" style="text-align: left"/>
     </form>
 </p>
+
+    <div>
+        <% if flash[:error] %>
+            <h3><%= flash[:error] %></h3>
+        <% end %> 
+    </div>

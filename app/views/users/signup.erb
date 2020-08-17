@@ -1,19 +1,25 @@
+
 <h2>Please Sign up</h2> 
     <a href='/login'>Login</a> 
-    <div>
+   <!-- <div>
         <% if @error %>
             <%= @error %>
         <% end %> 
    </div>
-
+-->
 
 <form class="" class="other" action="/signup" method="POST">
     <label for="user_name">Username:</label>
     <input type="text" name="user_name" id="user_name" placeholder="username">
     <label for="email">Email:</label>
-    <input type="text" name="email" id="email" placeholder="Write your e-mail.." required>
+    <input type="text" name="email" id="email" placeholder="Write your e-mail..">
     <label for="password">Password:</label>
     <input type="password" name="password" id="password" placeholder="password">
     <input type="submit" value="sign up">
 </form>
 
+  <div> 
+    <% if flash[:error] %>
+        <h4><%= flash[:error] %></h4>
+    <% end %> 
+ </div>

@@ -7,7 +7,6 @@ class UserController < ApplicationController
         erb :'/users/signup'
     end
 
-
     post '/signup' do
         @user = User.new(params)
     #     if !@user.save #=> if user not save it shows error
@@ -18,16 +17,20 @@ class UserController < ApplicationController
     #             redirect to '/blogs'
     #     end
     # end
-        if @user.email.blank? || @user.password.blank? 
-            @error = "Please sign in"
-           # @error = @user.errors.full_messages
+        if @user.email.empty? || @user.password.empty?
+           flash[:error] = "Please enter the right credentials"
+           #binding.pry
+            #@error = "Must include email and password."
+            #binding.pry
             erb :'users/signup'
         elsif User.find_by(email: params[:email]) && @user.authenticate(params[:password])
-            @error = "Username already exist. Please try again"
-            #@error = @user.errors.full_messages
+            #@error = "account already exist. Please try again"
+             #@error = @user.errors.full_messages
+            #  flash[:error] = "Username already exist. Please try again."
             erb :'users/signup'
         else
             @user.save
+            #session(they key), user_id(key value pair) - is assignedn to the user id
             session[:user_id] = @user.id
             redirect '/blogs'
         end
@@ -47,8 +50,10 @@ class UserController < ApplicationController
            session[:user_id] = @user.id
            redirect '/blogs'
         else
-            @error = 'Invalid login. Please try again.'
-            #@error = @user.errors.full_messages
+           # @error = 'Invalid login. Please try again.'
+           # @error = @user.errors.full_messages
+           flash[:error] = 'Invalid login. Please try again.'
+           #binding.pry
             erb :'/users/login'
         end
     end
@@ -63,7 +68,6 @@ class UserController < ApplicationController
     end
 
     get '/logout' do
-         #binding.pry
          logout!
          #binding.pry
          redirect to '/'
