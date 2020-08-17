@@ -1,4 +1,4 @@
-   
+   <h2>All Blogs</h2>
    <% if @user.blogs.blank? %>
         <%= "You do not have any blogs on your list."%> 
         <b><a href='/blogs/new' class="button"><br> Add a Blog!</a></b>
@@ -7,20 +7,15 @@
      
         <p><b>Title:</b> <%= blog.title %></p>
         <p><b>Location:</b> <%= blog.location %></p> 
-        <p><b>Description: </b><%= blog.description %></p>
-        <p><b>Image</b>
-        <p><img src="<%= blog.image_url %>" alt="" height="400" width="600"></p>
-       
-        <p>
-          <a href="/blogs/<%= blog.id %>/edit"><button>Edit</button></a>
+        <p><b>Description:</b> <%= blog.description %></p>
+        <b>Image</b>
+        <p><img src="<%= blog.image_url %>" alt="<%= blog.image_url %>" height="400" width="600"></p>   
+            <a href="/blogs/<%= blog.id %>/edit"><button>Edit</button></a>
+            <br> <br>
             <form action="/blogs/<%= blog.id %>/delete" method="POST">   
               <input id="hidden" type="hidden" name="_method" value="DELETE">
               <input type="submit" value="Delete">     
-            </form> 
-        </p>     
- 
+            </form>       
     <% end %>
 <% end %>
-
-
-
+<br><br>
