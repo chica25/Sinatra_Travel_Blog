@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-    <body>  
-        <h1><% if @message %></h1>
+    <body> 
+     <h4>Create new blog</h4>
+         <p><% if @message %></p>
                 <p><%= @message %></p>
             <% end %>
-            <h2>Create new blog</h2>
             <div>
                 <form action="/blogs" method="POST">
                     <table style='text-align: left'>  

@@ -53,10 +53,10 @@ class UserController < ApplicationController
         end
     end
 
-    post '/login' do
-        login(params[:email], params[:password])
-        redirect to '/login'
-    end
+    # post '/login' do
+    #     login(params[:email], params[:password])
+    #     redirect to '/login'
+    # end
 
     get '/users/:id' do
         redirect to '/blogs'

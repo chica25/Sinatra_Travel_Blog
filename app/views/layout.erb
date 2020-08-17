@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="/stylesheets/main.css" />
   </head>
  <style>
- /*form {
+  /* 
+form {
   width: 100px
 }
 
@@ -31,52 +32,54 @@ input:focus, textarea:focus {
   border: 1px solid #ddd;
 }
 */
-</style>
+</style> 
 
   <body>
-    <div class="wrapper"></div>
-    <div class="nav"></div>
+   
+
       <!--<div><a href='/blogs/new'>Create a Blog</a></div>-->
 
-    <!-- current user -->
+    <!-- current user 
 
       <div>
-      <% if user_logged_in? %>
+      <% if  user_logged_in? %>
             <h3>Welcome, <%= @user.user_name.capitalize %></h3>
-            <a href='/'>Home</a>
-            <a href='/blogs'>All Blogs</a>
+              <a href='/blogs'>All Blogs</a>
+              <a href='/blogs/new'>Create new Blog</a>
             <a href='/logout'>Logout</a> 
       <% end %>
     </div>
 
-    <!-- new user -->
+    new user 
+
     <div>
       <% if !user_logged_in? %>
         <h2>Welcome to TravelLog</h2>
           <p>
-            <a href='/'>Home</a>
             <a href='/login'>Login</a>
             <a href='/signup'>Sign Up</a>
           </p>
       <% end %>
-    </div>
+      -->
+      <div class="nav">
+          <% if user_logged_in? %>
+          <h3>Welcome, <%= @user.user_name.capitalize %></h3> 
+             <a href='/blogs'>All blogs</a>
+              <a href='/blogs/new'>Create new Blog</a>
+              <a href='/logout'>Logout</a> 
+          <% end %>
+      </div>
+      
+      <div class="wrapper"></div>
 
-    <div>
-    </div>
+         <%= yield %>
 
-        <br>
-          <%= yield %>
-        <br>
-
-        <p>
         <footer class="branding">
-        <small>&copy; 2020 <strong>TravelLog</strong></small>
+          <small>&copy; 2020 <strong>TravelLog</strong></small>
         </footer>
-        </p>
+      </div>
       
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-
-
       
-    </body>
+  </body>
 </html>

@@ -2,11 +2,13 @@
  Displays the updated edits>
 <p><% if @message %></p>
 <p><%= @message %></p>
-<%end%>-->
-
-<a href="/blogs">back to all blogs</a>
+<%end%>
+    
+<%if current_user %>
+    <a href='/blogs'>back to all blogs<a>
+<%end%>
 <br><br>
-<p>
+<p>-->
     Title: <%= @blog.title %>
     <br>
     Location: <%= @blog.location %>

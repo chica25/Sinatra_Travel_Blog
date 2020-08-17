@@ -14,8 +14,13 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/' do
-    erb :welcome
+    if user_logged_in?
+      #redirect to '/blogs/'
+      redirect to "/blogs/#{@current_user.id}"
+    else      
+      erb :welcome
   end
+end
 
   helpers do   
     # code 1 

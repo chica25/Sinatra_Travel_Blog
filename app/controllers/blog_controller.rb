@@ -3,12 +3,21 @@ require './config/environment'
 class BlogController < ApplicationController
 
  #index action
+  # get '/blogs' do
+  #   if !user_logged_in?
+  #       redirect to '/login'
+  #   else
+  #     @user = current_user
+  #    # @blogs = Blog.all.reverse #=> shows who is the current user
+  #     @blogs = find_by(:id)
+  #     erb :'/blogs/index'
+  #   end
+  # end
   get '/blogs' do
     if !user_logged_in?
         redirect to '/login'
     else
       @user = current_user
-      @blogs = Blog.all.reverse #=> shows who is the current user
       erb :'/blogs/index'
     end
   end

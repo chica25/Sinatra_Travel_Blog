@@ -1,16 +1,10 @@
-<!--
 <div class="container"></div>
  <h1>Welcome to TravelLog</h1>
+    <% if !user_logged_in? %>
+            <a href='/login'>Login</a> 
+            <a href='/signup'>Signup</a>
+    <% end %>
 
- <% if user_logged_in? %>
-     <div><a href='/'>Home</a></div>
-        <a href='/logout'>Logout</a>  
-    <% else %>
-          <a href='/login'>Login</a> <br>
-          <a href='/signup'>Signup</a>
-   <div><a href='/blogs'>View all blogs</a></div>
-       <div><a href='/blogs/new'>Create a Blog</a></div>
-       <% end %>
 
-<a href='/login'>Login</a> OR <a href="/signup">Signup</a>
+<!--<a href='/login'>Login</a> OR <a href="/signup">Signup</a>
 </div> -->

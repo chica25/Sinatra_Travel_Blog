@@ -1,7 +1,11 @@
-<h2>Please Sign up</h2>
- <% if @error %>
-        <%= @error %>
-<% end %> 
+<h2>Please Sign up</h2> 
+    <a href='/login'>Login</a> 
+    <div>
+        <% if @error %>
+            <%= @error %>
+        <% end %> 
+   </div>
+
 
 <form class="other" action="/signup" method="POST">
     <label for="user_name">Username:</label>
@@ -9,7 +13,7 @@
     <label for="email">Email:</label>
     <input type="text" name="email" id="email" placeholder="Write your e-mail.." required>
     <label for="password">Password:</label>
-    <input type="password" name="password" id="password" placeholder="password" >
+    <input type="password" name="password" id="password" placeholder="password">
     <input type="submit" value="sign up">
 </form>
 
