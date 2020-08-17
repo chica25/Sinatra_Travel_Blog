@@ -1,6 +1,9 @@
 <h3>Edit Blog</h3>
-    <form class="" action="/blogs/<%= @blog.id %>" method="POST">
+
+    <form class="" action="/blogs/ <%= @blog.id %>" method="POST">
         <input id="hidden" type="hidden" name="_method" value="PATCH">
+
+
         <table style='text-align: left'>
             <tr>
                 <td><label for="title">Title:</label></td>
@@ -21,8 +24,8 @@
             </tr>
         </table>  
     </form>
-    
-   
+          
 
+          
 
    

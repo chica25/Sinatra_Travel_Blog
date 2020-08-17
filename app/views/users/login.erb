@@ -1,8 +1,8 @@
- 
+
     <h2>Please login</h2>
     <a href='/signup'>Sign Up</a>
     <p>
-     <form class="" class="other" action="/login" method="POST">
+     <form  class="" class="other" action="/login" method="POST">
         <table style='text-align: left'>
             <tr>
             <td><label for="email">Email:</label></td>
@@ -19,8 +19,18 @@
     </form>
 </p>
 
-    <div>
-        <% if flash[:error] %>
-            <h3><%= flash[:error] %></h3>
-        <% end %> 
-    </div>
+
+<!--
+<div class="alert alert-success" role="alert">
+  <strong>Well done!</strong> You successfully read this important alert message.
+
+ <div class="alert alert-succes" 
+
+
+
+            <% if flash[:error] %>
+                <h4><%= flash[:error] %></h4>
+            <% end %> 
+        </div>
+
+      -->

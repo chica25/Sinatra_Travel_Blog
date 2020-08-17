@@ -36,34 +36,22 @@ input:focus, textarea:focus {
 
   <body>
    
+     <div class="wrapper">
+        <% if flash[:error] %>
+            <h3 style="color:red;"><%= flash[:error] %></h3>
+        <% end %> 
+      </div>
 
-      <!--<div><a href='/blogs/new'>Create a Blog</a></div>-->
 
-    <!-- current user 
+      <div class="wrapper">
+        <% if flash[:message] %>
+            <h3 style="color:green;"><%= flash[:message] %></h3>
+        <% end %> 
+      </div>
 
-      <div>
-      <% if  user_logged_in? %>
-            <h3>Welcome, <%= @user.user_name.capitalize %></h3>
-              <a href='/blogs'>All Blogs</a>
-              <a href='/blogs/new'>Create new Blog</a>
-            <a href='/logout'>Logout</a> 
-      <% end %>
-    </div>
-
-    new user 
-
-    <div>
-      <% if !user_logged_in? %>
-        <h2>Welcome to TravelLog</h2>
-          <p>
-            <a href='/login'>Login</a>
-            <a href='/signup'>Sign Up</a>
-          </p>
-      <% end %>
-      -->
-      <div class="nav">
+        <div class="nav">
           <% if user_logged_in? %>
-          <h3>Welcome, <%= @user.user_name.capitalize %></h3> 
+          <h4>Welcome, <%= @user.user_name.capitalize %></h4> 
              <a href='/blogs'>All blogs</a>
               <a href='/blogs/new'>Create new Blog</a>
               <a href='/logout'>Logout</a> 
@@ -83,3 +71,4 @@ input:focus, textarea:focus {
       
   </body>
 </html>
+

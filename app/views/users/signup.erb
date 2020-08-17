@@ -1,14 +1,8 @@
 
 <h2>Please Sign up</h2> 
     <a href='/login'>Login</a> 
-   <!-- <div>
-        <% if @error %>
-            <%= @error %>
-        <% end %> 
-   </div>
--->
 
-<form class="" class="other" action="/signup" method="POST">
+<form  class="" action="/signup" method="POST">
     <label for="user_name">Username:</label>
     <input type="text" name="user_name" id="user_name" placeholder="username">
     <label for="email">Email:</label>
@@ -18,8 +12,4 @@
     <input type="submit" value="sign up">
 </form>
 
-  <div> 
-    <% if flash[:error] %>
-        <h4><%= flash[:error] %></h4>
-    <% end %> 
- </div>
+

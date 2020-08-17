@@ -8,7 +8,7 @@ class BlogController < ApplicationController
   #       redirect to '/login'
   #   else
   #     @user = current_user
-  #    # @blogs = Blog.all.reverse #=> shows who is the current user
+  #    # @blogs = Blog.all.reverse #=> shows all blogs
   #     @blogs = find_by(:id)
   #     erb :'/blogs/index'
   #   end
@@ -33,17 +33,24 @@ class BlogController < ApplicationController
   end
 end
  
+# ***** ask Michael
 # CREATE
 # make a POST request to '/blogs' - Submits the form; That's how we create a new blog
   post '/blogs' do
     #binding.pry
-    @blog = current_user.blogs.create(title: params[:title], location: params[:location], description: params[:description], image_url: params[:image_url], user_id: current_user.id)
-   if !@blog.blank? 
-   redirect to "/blogs/#{@blog.id}" #=> a response to the original post request
-  else
+     @blog = current_user.blogs.create(title: params[:title], location: params[:location], description: params[:description], image_url: params[:image_url], user_id: current_user.id)
+  # if !@blog.present? 
+    #if !@blog.blank? 
+   # if params[:title] != "" && params[:location] != "" && params[:description] != "" && params[:image_url] != ""
+    flash[:message] = "Your blog is now posted!"
+    redirect to "/blogs/#{@blog.id}" #=> a response to the original post request
+  # else
   # @error = "The title is required. Please try again."
-   flash[:error] = "Please enter credentials."
-     erb :'/blogs/new'
+  #  flash[:error] = "Please enter the right credentials."
+  #    erb :'/blogs/new'
+    else
+       flash[:error] = "Please enter details."
+         erb :'/blogs/new'
   end
 end
 
@@ -91,7 +98,8 @@ end
   delete '/blogs/:id/delete' do
     @blog = Blog.find_by_id(params[:id])
     @blog.destroy
-      redirect to '/blogs'
+    flash[:message] = "Blog deleted successfully!"
+    redirect to '/blogs'
   end
 end
 

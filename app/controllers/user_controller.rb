@@ -9,14 +9,6 @@ class UserController < ApplicationController
 
     post '/signup' do
         @user = User.new(params)
-    #     if !@user.save #=> if user not save it shows error
-    #         @error = @user.errors.full_messages
-    #             erb :'users/signup'
-    #     else
-    #         session[:user_id] = @user.id
-    #             redirect to '/blogs'
-    #     end
-    # end
         if @user.email.empty? || @user.password.empty?
            flash[:error] = "Please enter the right credentials"
            #binding.pry
@@ -26,7 +18,7 @@ class UserController < ApplicationController
         elsif User.find_by(email: params[:email]) && @user.authenticate(params[:password])
             #@error = "account already exist. Please try again"
              #@error = @user.errors.full_messages
-            #  flash[:error] = "Username already exist. Please try again."
+              flash[:error] = "Username already exist. Please try again."
             erb :'users/signup'
         else
             @user.save
@@ -44,10 +36,12 @@ class UserController < ApplicationController
         end
     end
 
+    # ask Michael - Doesn't show flash error
      post '/login' do
         @user = User.find_by(email: params[:email])
        if @user && @user.authenticate(params[:password])
            session[:user_id] = @user.id
+           flash[:message] = "You're in!"
            redirect '/blogs'
         else
            # @error = 'Invalid login. Please try again.'
@@ -57,11 +51,6 @@ class UserController < ApplicationController
             erb :'/users/login'
         end
     end
-
-    # post '/login' do
-    #     login(params[:email], params[:password])
-    #     redirect to '/login'
-    # end
 
     get '/users/:id' do
         redirect to '/blogs'
@@ -75,3 +64,13 @@ class UserController < ApplicationController
  end
  
 
+  # post '/login' do
+    #     @user. User.where(email: params[:email]).first
+    #     if @user.confirmed? and @user.auhteticate(params[:password])
+    #         sessiono[:user_id] = @user.id
+    #     redirect to '/login'
+    #     else
+    #         flash[:error] = 'Invalid login. Please try again.'
+    #         erb :'/users/login'
+    #     end
+    # end
