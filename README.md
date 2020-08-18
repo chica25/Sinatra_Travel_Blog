@@ -21,14 +21,14 @@ Please make sure you have the following gems on your gemfile:
 * gem 'chartkick'
 * gem 'sinatra-flash'
 
-### Step 2
+#### Step 2
 And then execute:
 
 * $ bundle install 
 
 ## Usage of 
 
-### Step 3
+#### Step 3
 * To run the application
 * run shotgun 
 
