@@ -17,22 +17,18 @@ class UserController < ApplicationController
             erb :'users/signup'
         end 
     end
-
-    # notes for -  session[:user_id] = @user.id 
-    # it sets the @user’s ID to the session hash user_id
-    # it saves it in the sessions hash so that they will be logged in until the user hits logout which will clear the session hash
   
     get '/login' do
-       if user_logged_in?
+        if user_logged_in?
             redirect to '/blogs'
-       else
-         erb :'/users/login'
+        else
+            erb :'/users/login'
         end
     end
 
      post '/login' do
         @user = User.find_by(email: params[:email])
-       if @user && @user.authenticate(params[:password])
+        if @user && @user.authenticate(params[:password])
            session[:user_id] = @user.id
            flash[:message] = "You're in!"
            redirect '/blogs'

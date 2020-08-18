@@ -30,7 +30,6 @@ end
       redirect to "/blogs/#{@blog.id}" 
     else
        flash.now[:error] = "Post not created: #{@blog.errors.full_messages.to_sentence}"
-      # flash.now[:error] = "{@blog.errors.full_messages.to_sentence}"
         erb :'/blogs/new'
     end
   end

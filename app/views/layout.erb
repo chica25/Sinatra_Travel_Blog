@@ -7,67 +7,59 @@
 
     <link rel="stylesheet" href="/stylesheets/main.css" />
   </head>
- <style>
-  /* 
-form {
-  width: 100px
+
+  <style> 
+
+.container input[type="submit"] {
+  height: 30px;
+  font-size: 13px;
+  background-color: #f55e55;
+  border: none;
+  color: #fff;
 }
 
-input {
-  width: 100px;
-}
-
-textarea {
-  resize: both;
-  max-height: 100px;
-}
-
-input, textarea {
-  outline: none;
-  border: 1px solid #ddd;
-}
-
-input:focus, textarea:focus {
-  box-shadow: 0 0 4px rgba(255, 0, 0, 0.5);
-  border: 1px solid #ddd;
-}
-*/
-</style> 
-
-  <body>
-   
-     <div class="wrapper">
-        <% if flash[:error] %>
-            <h3 style="color:red;"><%= flash[:error] %></h3>
-        <% end %> 
-      </div>
-
+.heading {
+    background-color: tomato;
+    padding: 30px 0;
+  }
+  <div class="heading">
+<h1 style="color:blue;">A Blue Heading</h1>
+</div>
+  </style> 
+    <body>
+    
       <div class="wrapper">
-        <% if flash[:message] %>
-            <h3 style="color:green;"><%= flash[:message] %></h3>
-        <% end %> 
-      </div>
+          <% if flash[:error] %>
+              <h3 style="color:red;"><%= flash[:error] %></h3>
+          <% end %> 
+        </div>
 
-        <div class="nav">
-          <% if user_logged_in? %>
-          <h2>Welcome, <%= @user.user_name.capitalize %></h2> 
-             <a href='/blogs'>All blogs</a>
-              <a href='/blogs/new'>Create new Blog</a>
-              <a href='/logout'>Logout</a> 
-          <% end %>
-      </div>
-      
-      <div class="wrapper"></div>
+        <div class="wrapper">
+          <% if flash[:message] %>
+              <h3 style="color:green;"><%= flash[:message] %></h3>
+          <% end %> 
+        </div>
 
-         <%= yield %>
+          <div class="nav">
+            <% if user_logged_in? %>
+            <h2>Welcome, <%= @user.user_name.capitalize %></h2> 
+              <a href='/blogs'>All blogs</a>
+                <a href='/blogs/new'>Create new Blog</a>
+                <a href='/logout'>Logout</a> 
+            <% end %>
+        </div>
+        
+        <div class="wrapper"></div>
 
-        <footer class="branding">
-          <small>&copy; 2020 <strong>TravelLog</strong></small>
-        </footer>
-      </div>
-      
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-      
-  </body>
+          <%= yield %>
+
+          <footer class="branding">
+            <small>&copy; 2020 <strong>TravelLog</strong></small>
+          </footer>
+        </div>
+        
+          <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+        
+    </body>
 </html>
 
