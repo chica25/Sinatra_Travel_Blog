@@ -7,8 +7,8 @@ Please make sure you have the following gems on your gemfile:
 
 Step 1
 gem 'sinatra'
-gem 'activerecord', '~> 4.2', '>= 4.2.6', :require => 'active_record'
-gem 'sinatra-activerecord', :require => 'sinatra/activerecord'
+gem 'activerecord'
+gem 'sinatra-activerecord'
 gem 'rake'
 gem 'require_all'
 gem 'sqlite3', '~> 1.3.6'
