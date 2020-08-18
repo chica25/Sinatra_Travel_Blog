@@ -2,7 +2,7 @@ require './config/environment'
 
 class BlogController < ApplicationController
 
- #index action 
+
   get '/blogs' do
     if !user_logged_in?
         redirect to '/login'
@@ -12,8 +12,6 @@ class BlogController < ApplicationController
     end
   end
 
-# NEW
-# Make a GET request tp '/blogs/new' - to render the form
   get '/blogs/new' do
    if user_logged_in?
       erb :'/blogs/new'
@@ -22,7 +20,6 @@ class BlogController < ApplicationController
   end
 end
 
-# CREATE
   post '/blogs' do
      @blog = current_user.blogs.new(title: params[:title], location: params[:location], description: params[:description], image_url: params[:image_url], user_id: current_user.id)
    if @blog.save
@@ -34,8 +31,6 @@ end
     end
   end
 
-# SHOW
-# make a GET request to '/blogs/:id' - This is a dynamic route
   get '/blogs/:id' do
       @blog = Blog.find_by_id(params[:id])
     if @blog 
@@ -45,15 +40,11 @@ end
     end
   end
 
-# EDIT
-# make a GET request to '/blogs/:id/edit' - Can make changes to a blog
   get '/blogs/:id/edit' do
     @blog = Blog.find_by_id(params[:id])
       erb :'/blogs/edit'
   end
 
-# UPDATE
-# Make a PATCH request to '/blog/:id'
   patch '/blogs/:id' do
     if user_logged_in?
       @blog = Blog.find_by_id(params[:id])
@@ -67,8 +58,6 @@ end
     end 
   end 
   
-# DESTROY 
-# Make a DELETE request to '/blogs/:id'
   delete '/blogs/:id/delete' do
     @blog = Blog.find_by_id(params[:id])
     @blog.destroy

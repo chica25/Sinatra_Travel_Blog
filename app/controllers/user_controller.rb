@@ -13,7 +13,6 @@ class UserController < ApplicationController
             redirect '/blogs'
         else 
             flash.now[:error] = 'All fields are required.'
-            #flash.now[:error] = "Account not created: #{@user.errors.full_messages.to_sentence}"
             erb :'users/signup'
         end 
     end
