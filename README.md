@@ -1,5 +1,4 @@
-## Studio_Ghibli_CLI
-
+## Sinatra Project
 Welcome to my Sinatra app known as Travel Log. I created this app at Flatiron school. The application is a Travel Blog where users can create a username, email and password and will need to enter their email and password in order to log in. Only Existing users have the option to create a blog, read, edit and delete. 
 
 ## Installation
