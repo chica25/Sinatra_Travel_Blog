@@ -5,7 +5,7 @@ Welcome to my Sinatra app known as Travel Log. I created this app at Flatiron sc
 
 Please make sure you have the following gems on your gemfile:
 
-Step 1
+### Step 1
 * gem 'sinatra'
 * gem 'activerecord'
 * gem 'sinatra-activerecord'
@@ -21,14 +21,14 @@ Step 1
 * gem 'chartkick'
 * gem 'sinatra-flash'
 
-Step 2
+### Step 2
 And then execute:
 
 * $ bundle install 
 
 ## Usage of 
 
-Step 3
+### Step 3
 * To run the application
 * run shotgun 
 
