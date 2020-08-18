@@ -2,8 +2,6 @@ require './config/environment'
 
 class ApplicationController < Sinatra::Base
 
-
-#configuration and helper methods
   configure do
     set :public_folder, 'public'
     set :views, 'app/views'
@@ -14,7 +12,6 @@ class ApplicationController < Sinatra::Base
 
   get '/' do
     if user_logged_in?
-      #redirect to '/blogs/'
       redirect to "/blogs/#{@current_user.id}"
     else      
       erb :welcome
@@ -22,17 +19,11 @@ class ApplicationController < Sinatra::Base
 end
 
   helpers do   
-    # code 1 
     def current_user 
       @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id] 
       @user = User.find_by_id(session[:user_id])
     end
   end
-    # code 2 
-    # def current_user #=> keeps track of the logged in user
-    #   User.find_by(id: session[:user_id]
-    #   #@user.find(session[:user_id])
-    # end
 
     def user_logged_in?
         !!current_user 
