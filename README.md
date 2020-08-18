@@ -5,7 +5,7 @@ Welcome to my Sinatra app known as Travel Log. I created this app at Flatiron sc
 
 Please make sure you have the following gems on your gemfile:
 
-### Step 1
+#### Step 1
 * gem 'sinatra'
 * gem 'activerecord'
 * gem 'sinatra-activerecord'
