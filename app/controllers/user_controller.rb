@@ -37,10 +37,6 @@ class UserController < ApplicationController
         end
     end
 
-    get '/users/:id' do
-        redirect to '/blogs'
-    end
-
     get '/logout' do
          logout!
          redirect to '/'

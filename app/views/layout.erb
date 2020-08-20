@@ -8,24 +8,39 @@
     <link rel="stylesheet" href="/stylesheets/main.css" />
   </head>
 
-  <style> /*
+  <style> 
 
-.container input[type="submit"] {
-  height: 30px;
-  font-size: 13px;
-  background-color: #f55e55;
-  border: none;
-  color: #fff;
-}
-
-.heading {
-    background-color: tomato;
-    padding: 30px 0;
+  body {
+  
   }
-  <div class="heading">
-<h1 style="color:blue;">A Blue Heading</h1>
-</div>
-*/
+
+   h2 {
+     color: tomato;
+     padding: 10px;
+   }
+
+   h3 {
+     color: purple
+     padding: 10px;
+     ;
+   }
+
+    h4 {
+     color: DodgerBlue;
+     padding: 10px;
+   }
+
+   .form {
+      
+     
+   }
+
+
+   .footer {
+     font-color: black;
+      background-color: LightCyan;
+      padding: 10px;
+    }
   </style> 
 
     <body>
@@ -34,7 +49,7 @@
           <% if flash[:error] %>
               <h3 style="color:red;"><%= flash[:error] %></h3>
           <% end %> 
-        </div>
+      </div>
 
         <div class="wrapper">
           <% if flash[:message] %>
@@ -44,21 +59,20 @@
 
           <div class="nav">
             <% if user_logged_in? %>
-            <h2>Welcome, <%= @user.user_name.capitalize %></h2> 
-              <a href='/blogs'>All blogs</a>
-                <a href='/blogs/new'>Create new Blog</a>
+                <h2>Welcome, <%= @user.user_name.capitalize %></h2> 
+                <a href='/blogs'>All Logs</a>
+                <a href='/blogs/new'>Create New Log</a>
                 <a href='/logout'>Logout</a> 
             <% end %>
-        </div>
-        
-        <div class="wrapper"></div>
+   
 
           <%= yield %>
 
-          <footer class="branding">
-            <small>&copy; 2020 <strong>TravelLog</strong></small>
+          <p>
+          <footer class="footer">
+            <h4>&copy; 2020 TravelLog<h4>
           </footer>
-        </div>
+        </p>
         
           <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
         

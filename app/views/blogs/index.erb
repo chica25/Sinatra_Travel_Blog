@@ -1,19 +1,21 @@
 
    <% if @user.blogs.blank? %>
+   <br><br>
         <%= "You do not have any blogs on your list."%> 
-        <b><a href='/blogs/new' class="button"><br> Add a Blog!</a></b>
+        <b><a href='/blogs/new' class="button"><br> <h3>New Log!</h3></a></b>
   <% else %>    
-     <h3>All Blogs</h3>
+     <h3>All Travel Logs</h3>
+     <!-- all blogs of that user -->
         <% @user.blogs.each do |blog| %><br> 
-          <p><b>Title:</b> <%= blog.title %></p>
-          <p><b>Location:</b> <%= blog.location %></p> 
-          <p><b>Description:</b> <%= blog.description %></p>
-        <p><b>Image</b> 
+          <p><h4>Title:</h4> <%= blog.title %></p>
+          <p><h4>Location:</h4> <%= blog.location %></p> 
+          <p><h4>Description:</h4> <%= blog.description %></p>
+        <p><h4>Image</h4></p>
         <p><img src="<%= blog.image_url %>" alt="image" height="400" width="600"></p> 
    
         <a href="/blogs/<%= blog.id %>/edit"><button>Edit</button></a>
           <br> <br>
-        <form class="" action="/blogs/<%= blog.id %>/delete" method="POST">   
+        <form class="form" action="/blogs/<%= blog.id %>/delete" method="POST">   
           <input id="hidden" type="hidden" name="_method" value="DELETE">
           <input type="Submit" value="Delete">     
         </form>        

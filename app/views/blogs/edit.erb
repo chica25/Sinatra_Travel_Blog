@@ -1,4 +1,4 @@
-<h3>Edit Blog</h3>
+<h3>Edit Log</h3>
    <form class="" action="/blogs/ <%= @blog.id %>" method="POST">
         <input id="hidden" type="hidden" name="_method" value="PATCH">
 
@@ -13,7 +13,6 @@
             </tr>
             <tr>          
                 <td><label for="description">Description:</label></td>
-               <!-- <td><textarea type="text" name="description" placeholder="Edit description" id="description" value="<%= @blog.description %>"></textarea></td> -->
                 <td><input type="text" name="description" placeholder="Edit description" id="description" value="<%= @blog.description %>"></td>
             </tr>
             <tr>
