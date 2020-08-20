@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 
+=======
+## Sinatra Project
+>>>>>>> 11f34654327dff5f669a67ef4cbe49f7a56c74a4
 Welcome to my Sinatra app known as Travel Log. I created this app at Flatiron school. The application is a Travel Blog where users can create a username, email and password and will need to enter their email and password in order to log in. Only Existing users have the option to create a blog, read, edit and delete. 
 
 ### Installation
@@ -22,7 +26,11 @@ Please make sure you have the following gems on your gemfile:
 * gem 'sinatra-flash'
 
 #### Step 2
+<<<<<<< HEAD
 * And then execute:
+=======
+And then execute:
+>>>>>>> 11f34654327dff5f669a67ef4cbe49f7a56c74a4
 
 * $ bundle install 
 
