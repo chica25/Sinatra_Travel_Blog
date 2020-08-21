@@ -4,17 +4,44 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
     <title>Travel Log</title>
+    <link rel="stylesheet" href="public/main.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="stylesheet" href="/stylesheets/main.css" />
   </head>
  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <style> 
- 
 
+<link href="https://fonts.googleapis.com/css2?family=Oleo+Script:wght@400;700&family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+<style> 
+
+
+nav {
+    background-color: purple;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    display: flex;
+    align-items: center;
+
+}
+
+nav * {
+    display: inline;
+}
+
+nav li {
+    margin: 20px;
+}
   body {
-  padding: 10px;
+    padding: 10px;
   }
+
+  .welcome {
+  font-family: 'Oleo Script', cursive;
+
+  } 
 
    h2 {
      color: tomato;
@@ -50,10 +77,18 @@
     background: #6cf;
     text-align: left;
     }
+
+    img {
+    max-width: 100%;
+    height: auto;
+}
+
+
   </style> 
 
     <body>
-    
+
+
       <div class="wrapper">
           <% if flash[:error] %>
               <h3 style="color:red;"><%= flash[:error] %></h3>
@@ -69,22 +104,23 @@
           <div class="nav">
             <% if user_logged_in? %>
                 <h2>Welcome, <%= @user.user_name.capitalize %></h2> 
-                <a href='/blogs'>All Logs</a>
-                <a href='/blogs/new'>Create New Log</a>
-                <a href='/logout'>Logout</a> 
+                <ul>
+                <li><a href='/blogs'>All Blogs</a></li>
+                <li><a href='/blogs/new'>Create New Log</a></li>
+                <li><a href='/logout'>Logout</a></li> 
+                </ul>
             <% end %>
    
 
           <%= yield %>
-
+<!--
           <p>
           <footer class="footer">
-            <p>&copy; 2020 TravelLog</p>
+            <p>&copy; 2020 Travel Log</p>
           </footer>
         </p>
-        
-          <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-        
+        -->
+          <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>   
     </body>
 </html>
 

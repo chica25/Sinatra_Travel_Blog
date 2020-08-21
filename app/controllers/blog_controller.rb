@@ -25,7 +25,6 @@ end
       flash[:message] = "Your blog is now posted!"
       #binding.pry
       redirect to "/blogs/#{@blog.id}" 
-     
     else
        flash.now[:error] = "Post not created: #{@blog.errors.full_messages.to_sentence}"
         erb :'/blogs/new'
@@ -41,6 +40,7 @@ end
     end
   end
 
+  # -- before
   # get '/blogs/:id/edit' do
   #   @blog = Blog.find_by_id(params[:id])
   #   #binding.pry
@@ -49,49 +49,85 @@ end
 
 
   # --- Refactor edit method---
-  get '/blogs/:id/:edit' do 
-    @blog = Blog.find_by_id(params[:id]) #=> is what is passed in from the edit form
-      #binding.pry
+  # get '/blogs/:id/:edit' do 
+  #   @blog = Blog.find_by_id(params[:id]) #=> is what is passed in from the edit form
+  #     binding.pry
+  #   if @blog.user_id == current_user.id
+  #   #binding.pry
+  #     erb :'/blogs/edit'
+  #   else
+  #     redirect to '/users/login'
+  #   end
+  # end
+
+  # --- Refactor edit method--- 2
+ get '/blogs/:id/:edit' do
+    @blog = Blog.find_by_id(params[:id])
+    #binding.pry
+    #if @blog.user_id && user_logged_in? == current_user.id 
     if @blog.user_id == current_user.id
-      erb :'/blogs/edit'
+      erb :'/blogs/edit' 
     else
-      redirect to '/users/login'
+      flash[:error] = "You don't have access"
+       redirect to '/login'
     end
   end
   
 # --  need to protect code
-  patch '/blogs/:id' do
-    if user_logged_in?
-      @blog = Blog.find_by_id(params[:id])
-      params.delete(:_method)
-      @blog.update(params)
-      flash[:message] = "Blog updated successfully!"
+  # patch '/blogs/:id' do
+  #   if user_logged_in? 
+  #     @blog = Blog.find_by_id(params[:id])
+  #     params.delete(:_method)
+  #     @blog.update(params)
+  #     flash[:message] = "Blog updated successfully!"
+  #       redirect to "/blogs/#{@blog.id}"
+  #   else
+  #     flash[:error] = "Please try again"
+  #     erb :'/users/login'
+  #   end 
+  # end 
+  
+  #--- refactor --------
+ patch '/blogs/:id' do
+  @blog = Blog.find_by_id(params[:id])
+    if @blog.user_id == current_user.id 
+        @blog = Blog.find_by_id(params[:id])
+        #binding.pry
+        params.delete(:_method)
+        @blog.update(params)
+        flash[:message] = "Blog updated successfully!"
         redirect to "/blogs/#{@blog.id}"
     else
-      flash[:error] = "Please try again"
+      flash[:error] = "You don't have permission"
       erb :'/users/login'
     end 
-  end 
-  
-  # --- refactor --------
-#  patch '/blogs/:id' do
-#     if @blog.user_id == current_user.id
-#       @blog = Blog.find_by_id(params[:id])
-#       params.delete(:_method)
-#       @blog.update(params)
-#       flash[:message] = "Blog updated successfully!"
-#         redirect to "/blogs/#{@blog.id}"
-#     else
-#       flash[:error] = "Please try again"
-#       erb :'/users/login'
-#     end 
-#   end
+  end
 
   # --  need to protect code
-  delete '/blogs/:id/delete' do
+  # delete '/blogs/:id/delete' do 
+  #   @blog = Blog.find_by_id(params[:id]) 
+  #   @blog.destroy
+  #   flash[:message] = "Blog deleted successfully!"
+  #     redirect to '/blogs'
+  # end
+
+  # ---- refactor delete
+  
+  delete '/blogs/:id/delete' do 
     @blog = Blog.find_by_id(params[:id]) 
-    @blog.destroy
-    flash[:message] = "Blog deleted successfully!"
-      redirect to '/blogs'
+    if @blog.user_id == current_user.id 
+      @blog.destroy
+        flash[:message] = "Blog deleted successfully!"
+        redirect to '/blogs'
+    else
+      flash[:error] = "You don't have permission"
+      erb :'/users/login'
+   end
   end
 end
+
+
+  # --- private method
+#   private
+#   def set_user
+# end
