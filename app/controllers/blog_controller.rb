@@ -64,7 +64,6 @@ end
  get '/blogs/:id/:edit' do
     @blog = Blog.find_by_id(params[:id])
     #binding.pry
-    #if @blog.user_id && user_logged_in? == current_user.id 
     if @blog.user_id == current_user.id
       erb :'/blogs/edit' 
     else
@@ -114,14 +113,15 @@ end
   # ---- refactor delete
   
   delete '/blogs/:id/delete' do 
-    @blog = Blog.find_by_id(params[:id]) 
-    if @blog.user_id == current_user.id 
+   # binding.pry
+    if @blog = current_user.blogs.find_by_id(params[:id]) 
+   # if @blog.user_id == current_user.id 
       @blog.destroy
         flash[:message] = "Blog deleted successfully!"
         redirect to '/blogs'
     else
       flash[:error] = "You don't have permission"
-      erb :'/users/login'
+        erb :'/users/login'
    end
   end
 end

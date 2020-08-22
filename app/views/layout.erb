@@ -9,11 +9,21 @@
 
     <link rel="stylesheet" href="/stylesheets/main.css" />
   </head>
- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  
+
+ <!--<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">-->
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 
 <link href="https://fonts.googleapis.com/css2?family=Oleo+Script:wght@400;700&family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+
+<img src="https://pix10.agoda.net/city/20717/20717-7x3.jpg?s=1920x">
+
 <style> 
 
+img {
+  max-width: 100%;
+  height: auto;
+}
 
 nav {
     background-color: purple;
@@ -62,32 +72,24 @@ nav li {
 
    .form {
       
-     
    }
 
 
-   .footer {
-    color: white;
-    background-color: DodgerBlue;
-    padding: 10px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    height: 60px;   
-    background: #6cf;
-    text-align: left;
-    }
 
-    img {
-    max-width: 100%;
-    height: auto;
-}
+   .yield {
+      background-color: #ffffe6;
+      position: fixed;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+   
+    }
 
 
   </style> 
 
     <body>
-
 
       <div class="wrapper">
           <% if flash[:error] %>
@@ -103,24 +105,21 @@ nav li {
 
           <div class="nav">
             <% if user_logged_in? %>
-                <h2>Welcome, <%= @user.user_name.capitalize %></h2> 
+               
                 <ul>
                 <li><a href='/blogs'>All Blogs</a></li>
-                <li><a href='/blogs/new'>Create New Log</a></li>
+                <li><a href='/blogs/new'>Create New Blog</a></li>
                 <li><a href='/logout'>Logout</a></li> 
                 </ul>
             <% end %>
-   
+           
+     </div>
 
           <%= yield %>
-<!--
-          <p>
+<br><br>
           <footer class="footer">
-            <p>&copy; 2020 Travel Log</p>
+            <p id="copyright">&copy; 2020 Travel Log/ Patricia Cordero</p>
           </footer>
-        </p>
-        -->
-          <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>   
     </body>
 </html>
 

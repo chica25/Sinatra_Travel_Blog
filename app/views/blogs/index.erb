@@ -3,8 +3,8 @@
    <br><br>
         <%= "You do not have any Blog."%> 
         <b><a href='/blogs/new' class="button"><br> <h3>New Blog!</h3></a></b>
-  <% else %>    
-     <h3>All Travel Blogs</h3>
+  <% else %>  
+   <h2>Welcome, <%= @user.user_name.capitalize %></h2>   
      <!-- all blogs of that user -->
         <% @user.blogs.each do |blog| %><br> 
           <p><h4>Title:</h4> <%= blog.title %></p>
