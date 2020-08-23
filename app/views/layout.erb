@@ -14,19 +14,20 @@
 <style> 
 
 body {
-   padding: 10px;
-}
-.img {
-  width: 100%;
-  height: auto;
+  padding: 10px;
+ 
 }
 
-.header {
+header {
   text-align: center;
   margin: 10px 10px;
+  color: tomato;
+  font-family: Moonbright Demo;
+  font-size:40px;
+  text-align: left;
 }
 
-.form {
+form {
   padding: 10px;
   margin-righ: 5px;
 }
@@ -34,29 +35,52 @@ body {
 h2 {
   color: tomato;
   font-family: Moonbright Demo;
-  font-size: 80px;
+  font-size: 84px;
+}
+
+.log-sign { 
+  display: inline;
+  font-family: Georgia;
+  font-size: 18px;
+  color: #52527a;
+}
+
+.button {
+  font-family: Georgia;
+  color: #52527a;
 }
 
 h3 {
-  font-family: helvetica;
-  font-style: light;
+  font-family: Georgia;
+  color: DodgerBlue;
 }
-
 
 h4 {
-  font-family: gill sans;
-  font-size: 16px;
+  font-family: Georgia;
+  padding: 8px 15px 8px 15px;
+	border: none;
+  border-radius: 4px;
+	margin-bottom: 10px;
+  color: SlateGray;
 }
 
-link {
+h5 {
+  font-family: Georgia;
+}
+
+
+.link {
+  font-family: Georgia;
+   color: #52527a;
+}
+
+a:link {
   display: inline;
-  font-family: gill sans;
-  font-style: light;
   padding: 3px;
 }
 
 a:hover {
-  color: blue;
+  color: tomato;
 }
 
 ul {
@@ -69,53 +93,88 @@ ul {
 
 li {
   display: inline;
-   font-family: helvetica;
-   font-size: 16px;
+  font-family: Georgia;
+  font-size: 16px;
 }
 
-footer {
-  padding: 10px;
-  margin: 10px 5px;
-  text-align: center;
+.error {
+  color: blue;
+  font-family: Georgia;
 }
+
+.new {
+  font-family: Georgia;
+  font-size: 18px;
+  color: SlateGray;
+	padding: 8px 15px 8px 15px;
+	border: none;
+  border-radius: 4px;
+	margin-bottom: 10px;
+}
+
+
+.edit {
+ font-family: Georgia;
+  font-size: 18px;
+  color: SlateGray;
+	padding: 8px 15px 8px 15px;
+	border: none;
+  border-radius: 4px;
+	margin-bottom: 10px;
+}
+
+.img {
+  bottom:0;
+  width: 100%;
+  height: auto;
+  display:inline-block;
+  background-repeat: no-repeat;
+  font-family: Georgia;
+}
+
+.footer { 
+  bottom: 0; 
+  width: 100%; 
+  height: 40px; 
+  color: SlateGray;
+  margin: auto;
+  font-family: Georgia;
+  color: SlateGray;
+  }
 
 </style> 
 
     <body>
-    <div class="header"></div>
-     <h2>Travel Log</h2> 
-    </div>
+      <h2>Travel Log</h2> 
 
-      <div class="wrapper">
-          <% if flash[:error] %>
-              <h3 style="color:red;"><%= flash[:error] %></h3>
-          <% end %> 
-      </div>
-
-        <div class="wrapper">
-          <% if flash[:message] %>
-              <h3 style="color:green;"><%= flash[:message] %></h3>
-          <% end %> 
+        <div class="error">
+            <% if flash[:error] %>
+                <h3 style="color:red;"><%= flash[:error] %></h3>
+            <% end %> 
         </div>
 
-          <div class="nav">
-            <% if current_user %>
-                <ul>
-                <li><a class="link" href='/blogs/new'>New Blog</a></li>
-                <li><a class="link" href='/blogs'>All Blogs</a></li>
-                <li><a class="link" href='/logout'>Logout</a></li> 
-                </ul>
-            <% end %>     
-     </div>
+          <div class="message">
+            <% if flash[:message] %>
+                <h3 style="color:green;"><%= flash[:message] %></h3>
+            <% end %> 
+          </div>
 
-          <%= yield %>
-    
-        <img class="img" src="imgs/travel_1_edit.jpg">
-          
+            <div class="nav">
+              <% if current_user %>
+                  <ul>
+                  <li><a class="link" href='/blogs/new'>New Blog</a></li>
+                  <li><a class="link" href='/blogs'>All Blogs</a></li>
+                  <li><a class="link" href='/logout'>Logout</a></li> 
+                  </ul>
+              <% end %>     
         
-          <footer class="footer">
-            <div id="copyright">&copy; 2020 Travel Log</div>
-          </footer>
+
+            <%= yield %>
+    
+          <br><br>
+            <footer class="footer">
+              <div id="copyright">&copy; 2020 Travel Log</div>
+            </footer>
        
     </body>
 </html>

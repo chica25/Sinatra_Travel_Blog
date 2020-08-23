@@ -7,6 +7,7 @@ class BlogController < ApplicationController
         redirect '/login'
     else
     @blogs = Blog.all
+    # binding.pry
       @user = current_user
       erb :'/blogs/index'
     end
@@ -33,18 +34,16 @@ end
 
   get '/blogs/:id' do
     @blog = Blog.find_by_id(params[:id])
-    @user = current_user
-    if @blog 
+    if @blog && user_logged_in? 
         erb :'/blogs/show'
     else
         redirect '/blogs'
     end
   end
 
-
-  get '/blogs/:id/edit' do 
+  get '/blogs/:id/edit' do
     @blog = Blog.find_by_id(params[:id]) #=> is what is passed in from the edit form
-    if @blog.user_id == current_user.id
+    if @blog && user_logged_in? && (current_user.id == @blog.user_id)
       erb :'/blogs/edit'
     else
       flash[:error] = "You don't have permission"
@@ -52,7 +51,6 @@ end
     end
   end
 
-  #--- refactor --------
  patch '/blogs/:id' do
   @blog = Blog.find_by_id(params[:id])
     if @blog.user_id == current_user.id
@@ -67,13 +65,15 @@ end
   
   delete '/blogs/:id/delete' do 
    @blog = Blog.find_by_id(params[:id])
+   #if user_logged_in? && (current_user.id == @blog.user_id)
    if @blog.user_id == current_user.id
       @blog.destroy
         flash[:message] = "Blog deleted successfully!"
         redirect '/blogs'
     else
-      flash[:error] = "You don't have permission"
-        erb :'/login'
+      flash[:error] = "Wrong entry"
+        erb :'users/login'
+        #redirect '/login'
       end
     end
  end

@@ -1,12 +1,16 @@
-<h4>New Blog</h4>
-    <p><b><h4>Title:</h4></b> <%= @blog.title %></p>
-    <p><h4><b>Location:</b></h4> <%= @blog.location %></p>
-    <p><h4><b>Description:</b></h4> <%= @blog.description %></p>
-    <p><h4><b>Image</b></h4></p>
-    <p><img src="<%= @blog.image_url %>" alt="<%= @blog.image_url %>" height="400" width="600"></p>
-<% if @blog.user_id == @user.id%>
-   <form class="form" action="/blogs/<%= @blog.id %>/delete" method="POST">   
-          <input id="hidden" type="hidden" name="_method" value="DELETE">
-          <input type="Submit" value="Delete">     
-        </form>
-    <%end%>
+<h3>New Blog</h3>
+<br>
+ <p><img src="<%= @blog.image_url %>" alt="<%= @blog.image_url %>" height="400" width="600"></p>
+    <h4>Title:</h4><%= @blog.title %>
+    <h4>Location:</h4> <%= @blog.location %>
+    <h4>Description:</h4> <%= @blog.description %>
+    <h4>Image</h4>
+   
+<% if @blog.user_id == current_user.id%>
+    <form class="form" action="/blogs/<%= @blog.id %>/delete" method="POST">   
+        <input id="hidden" type="hidden" name="_method" value="DELETE">
+        <input type="Submit" value="Delete">     
+    </form>
+<%end%>
+ 
+ <br>

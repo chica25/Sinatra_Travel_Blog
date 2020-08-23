@@ -12,7 +12,7 @@ class UserController < ApplicationController
             session[:user_id] = @user.id 
             redirect '/blogs'
         else 
-            flash.now[:error] = 'All fields are required.'
+            flash.now[:message] = 'All fields are required.'
             erb :'users/signup'
         end 
     end

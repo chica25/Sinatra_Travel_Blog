@@ -1,26 +1,31 @@
-<h4>Edit Blog</h4>
+<h3>Edit Blog Page</h3>
    <form class="form" action="/blogs/<%= @blog.id %>" method="POST">
         <input id="hidden" type="hidden" name="_method" value="PATCH">
 
       <table style='text-align: left'>
             <tr>
-                <td><label for="title">Title:</label></td>
-                <td><input type="text" name="title" placeholder="Title" id="title" value="<%= @blog.title %>"></td>
+                <td><label class="edit" for="image_url">Image </label></td>
+                <td><input class="edit" type="text" name="image_url" placeholder="url" id="image_url" value="<%= @blog.image_url %>"></td>
+                <br>
             </tr>
             <tr>
-                <td><label for="location">Location:</label></td>
-                <td><input type="text" name="location" placeholder="Location" id="location" value="<%= @blog.location %>"></td>
-            </tr>
-            <tr>          
-                <td><label for="description">Description:</label></td>
-                <td><input type="text" name="description" placeholder="Edit description" id="description" value="<%= @blog.description %>"></td>
+                <td><label class="edit" for="title">Title: </label></td>
+                <td><input class="edit" type="text" name="title" placeholder="Title" id="title" value="<%= @blog.title %>"></td>
             </tr>
             <tr>
-                <td><label for="image_url">Image</label></td>
-                <td><input type="text" name="image_url" placeholder="url" id="image_url" value="<%= @blog.image_url %>"></td>
-                <td><input type="submit" value="save changes"></td>
+                <td><label class="edit" for="location">Location: </label></td>
+                <td><input class="edit" type="text" name="location" placeholder="Location" id="location" value="<%= @blog.location %>"></td>
             </tr>
-        </table>  
+            <tr>         
+                <td><label class="edit" for="description">Description: </label></td>
+                <td><input class="edit" type="text" name="description" placeholder="Edit description" id="description" value="<%= @blog.description %>"></td>
+                 <td><input class="button" type="submit" value="save changes"></td>
+                 <br>
+            </tr>
+        </table> 
     </form>
+   <br>
           
 
+     
+          

@@ -6,7 +6,7 @@
           <p><h4>Location:</h4> <%= blog.location %></p> 
           <p><h4>Description:</h4> <%= blog.description %></p>
    <% if blog.user_id == @user.id%>
-        <a class="link" href="/blogs/<%= blog.id %>/edit"><button>Edit</button></a>
+        <a class="link" href="/blogs/<%= blog.id%>/edit"><button>Edit</button></a>
          <% end %> 
       <% end %>       
  
