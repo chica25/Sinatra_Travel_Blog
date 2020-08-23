@@ -19,7 +19,7 @@ class UserController < ApplicationController
   
     get '/login' do
         if user_logged_in?
-            redirect to '/blogs'
+            redirect '/blogs'
         else
             erb :'/users/login'
         end
@@ -39,7 +39,7 @@ class UserController < ApplicationController
 
     get '/logout' do
          logout!
-         redirect to '/'
+         redirect '/'
      end
  end
 

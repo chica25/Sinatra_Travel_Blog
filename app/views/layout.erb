@@ -1,95 +1,23 @@
 <!DOCTYPE html>
-
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
     <title>Travel Log</title>
     <link rel="stylesheet" href="public/main.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Oleo+Script:wght@400;700&family=Open+Sans:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/stylesheets/main.css" />
   </head>
-  
 
- <!--<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">-->
- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-
-<link href="https://fonts.googleapis.com/css2?family=Oleo+Script:wght@400;700&family=Open+Sans:wght@300&display=swap" rel="stylesheet">
-
-<img src="https://pix10.agoda.net/city/20717/20717-7x3.jpg?s=1920x">
 
 <style> 
-
-img {
-  max-width: 100%;
-  height: auto;
-}
-
-nav {
-    background-color: purple;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 80px;
-    display: flex;
-    align-items: center;
-
-}
-
-nav * {
-    display: inline;
-}
-
-nav li {
-    margin: 20px;
-}
-  body {
-    padding: 10px;
-  }
-
-  .welcome {
-  font-family: 'Oleo Script', cursive;
-
-  } 
-
-   h2 {
-     color: tomato;
-     padding: 10px;
-     font-family: 'Open Sans', sans-serif;
-   }
-
-   h3 {
-     color: purple
-     padding: 10px;
-     ;
-   }
-
-    h4 {
-     color: DodgerBlue;
-     padding: 10px;
-   }
-
-   .form {
-      
-   }
-
-
-
-   .yield {
-      background-color: #ffffe6;
-      position: fixed;
-    top: 0;
-    left: 0;
-    width: 50%;
-    height: 100%;
-   
-    }
-
 
   </style> 
 
     <body>
+    
+    <!-- <img src="./public/imgs/trave_banner_img_1.png" alt="Italian Trulli"> -->
 
       <div class="wrapper">
           <% if flash[:error] %>
@@ -104,21 +32,19 @@ nav li {
         </div>
 
           <div class="nav">
-            <% if user_logged_in? %>
-               
+            <% if current_user %>
                 <ul>
-                <li><a href='/blogs'>All Blogs</a></li>
                 <li><a href='/blogs/new'>Create New Blog</a></li>
+                <li><a href='/blogs'>All Blogs</a></li>
                 <li><a href='/logout'>Logout</a></li> 
                 </ul>
-            <% end %>
-           
+            <% end %>     
      </div>
 
           <%= yield %>
 <br><br>
           <footer class="footer">
-            <p id="copyright">&copy; 2020 Travel Log/ Patricia Cordero</p>
+            <p id="copyright">&copy; 2020 Travel Log</p>
           </footer>
     </body>
 </html>

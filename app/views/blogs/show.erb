@@ -4,4 +4,9 @@
     <p><b>Description:</b> <%= @blog.description %></p>
     <p><b>Image</b></p>
     <p><img src="<%= @blog.image_url %>" alt="<%= @blog.image_url %>" height="400" width="600"></p>
-
+<% if @blog.user_id == @user.id%>
+   <form class="form" action="/blogs/<%= @blog.id %>/delete" method="POST">   
+          <input id="hidden" type="hidden" name="_method" value="DELETE">
+          <input type="Submit" value="Delete">     
+        </form>
+    <%end%>

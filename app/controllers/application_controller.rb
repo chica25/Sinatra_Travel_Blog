@@ -7,17 +7,12 @@ class ApplicationController < Sinatra::Base
     set :views, 'app/views'
     enable :sessions
     set :session_secret, "The Big Lebowski"
-     register Sinatra::Flash
-    # set :show_exceptions, false
+    register Sinatra::Flash
   end
-
-  #not_found do
-   # status 404
-  #end
 
   get '/' do
     if user_logged_in?
-      redirect to "/blogs/#{@current_user.id}"
+      redirect "/blogs/#{@current_user.id}"
     else      
       erb :welcome
   end
@@ -26,12 +21,11 @@ end
   helpers do   
     def current_user 
       @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id] 
-      @user = User.find_by_id(session[:user_id])
     end
   end
 
     def user_logged_in?
-        !!current_user 
+      !!current_user 
     end
 
     def logout!
