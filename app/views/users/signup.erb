@@ -1,10 +1,10 @@
 <div class="sign-up">
-<h2>Sign up page</h2> 
-    <a href='/login'>Login</a> 
+<h3>Sign Up</h3> 
+<a class="link" href='/login'>Login</a> 
 </div>
-  <p>
-<form class="sign-up" action="/signup" method="POST">
- <table style='text-align: left'>
+ <!--
+<form class="form" action="/signup" method="POST">
+ <table >
     <tr>
     <td><label class="sign-up" for="user_name">Username:</label></td>
     <td><input class="sign-up" type="text" name="user_name" id="user_name" placeholder="username" id="username"></td>
@@ -19,8 +19,19 @@
     <td><input class="sign-up" type="reset" value="Reset" style="text-align: left"/><td>
     <td><input class="sign-up" type="submit" value="sign up"></td>
 </form>
+-->
 
- </p>
-
-
+ <form class="form" action="/login" method="POST">
+   <fieldset>
+    <label class="sign-up" for="user_name">Username:</label>
+    <input class="sign-up" type="text" name="user_name" id="user_name" placeholder="username" id="username">
+    <label class="sign-up" for="email">Email:</label>
+     <input class="sign-up" type="text" name="email" id="email" placeholder="Write your e-mail.." id="email">
+    <label class="sign-up" for="password">Password:</label>
+    <input class="sign-up" type="password" name="password" id="password" placeholder="password" id="password">
+            <input  class="sign-up" type="reset" value="Reset" style="text-align: left"/> 
+            <input class="sign-up" button type="submit" value="sign up">
+    </fieldset>
+</form>
+<br><br>
 
