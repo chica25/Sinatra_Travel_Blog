@@ -7,7 +7,6 @@ class BlogController < ApplicationController
         redirect '/login'
     else
     @blogs = Blog.all
-    # binding.pry
       @user = current_user
       erb :'/blogs/index'
     end
@@ -63,17 +62,14 @@ end
     end 
   end
   
-  delete '/blogs/:id/delete' do 
+  delete '/blogs/:id' do 
    @blog = Blog.find_by_id(params[:id])
-   #if user_logged_in? && (current_user.id == @blog.user_id)
    if @blog.user_id == current_user.id
       @blog.destroy
         flash[:message] = "Blog deleted successfully!"
         redirect '/blogs'
     else
-      flash[:error] = "Wrong entry"
-        erb :'users/login'
-        #redirect '/login'
+      erb :'/users/signup'
       end
     end
  end
