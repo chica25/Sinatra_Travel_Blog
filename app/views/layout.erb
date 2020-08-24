@@ -169,6 +169,19 @@ li {
       <h2>Travel Log</h2> 
 
        
+          <% if !flash[:alert].blank? %>
+             <div class="aler">
+                <%= flash[:alert] %>
+              </div>
+            <% end %> 
+
+          <% if !flash[:message].blank? %>
+              <div class="message">
+                <%= flash[:message] %>
+              </div>
+          <% end %>
+  
+    
         
 
             <div class="nav">
@@ -183,19 +196,6 @@ li {
 
             <%= yield %>
 
-                <% if !flash[:error].blank? %>
-             <div class="error">
-                <%= flash[:error] %>
-              </div>
-            <% end %> 
-
-             <% if !flash[:message].blank? %>
-             <div class="message">
-                <%= flash[:message] %>
-              </div>
-            <% end %>
-  
-    
           <br><br>
             <footer class="footer">
               <div id="copyright">&copy; 2020 Travel Log</div>
