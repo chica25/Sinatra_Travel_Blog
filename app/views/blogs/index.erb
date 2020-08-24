@@ -1,7 +1,7 @@
     <h3>Welcome, <%= @user.user_name.capitalize %></h3>   
         <% @blogs.each do |blog| %><br> 
-        <p><img src="<%= blog.image_url %>" alt="image" height="400" width="600"></p> 
-        <p><h4>Title:</h4> <a href="/blogs/<%= blog.id %>"><%= blog.title %></a></p>
+        <p><h4>Title:</h4><a href="/blogs/<%= blog.id %>"><%= blog.title %></a></p>
+        <p><img class="img" src="<%= blog.image_url %>" alt="image" height="400" width="600"></p> 
           <p><h4>Location:</h4> <%= blog.location %></p> 
           <p><h4>Description:</h4> <%= blog.description %></p>
    <% if blog.user_id == @user.id%>
