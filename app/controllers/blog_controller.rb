@@ -41,7 +41,7 @@ end
   end
 
   get '/blogs/:id/edit' do
-    @blog = Blog.find_by_id(params[:id]) #=> is what is passed in from the edit form
+    @blog = Blog.find_by_id(params[:id]) 
     if @blog && user_logged_in? && (current_user.id == @blog.user_id)
       erb :'/blogs/edit'
     else
