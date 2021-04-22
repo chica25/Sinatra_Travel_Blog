@@ -2,91 +2,164 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
-    <title>Travel Log</title>
-    <link rel="stylesheet" href="public/main.css">
+    <title>Travel Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/stylesheets/main.css" />
-
+    <link rel="stylesheet" href="stylesheets/main.css" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
+  <body>
+      <div class="logo">Travel Blog</div>  
+          <% if !flash[:error].blank? %>
+             <div class="error">
+                <%= flash[:error] %>
+              </div>
+            <% end %> 
+
+          <% if !flash[:message].blank? %>
+              <div class="message">
+                <%= flash[:message] %>
+              </div>
+          <% end %>
+        
+            <div class="nav">
+              <% if current_user %>
+                  <ul>
+                  <li><a class="link" href='/blogs/new'>New Blog</a></li>
+                  <li><a class="link" href='/blogs'>All Blogs</a></li>
+                  <li><a class="link" href='/logout'>Logout</a></li> 
+                  </ul>
+              <% end %>     
+          
+          <div class="img"></div>
+
+            <%= yield %>
+            
+            <div class="social media icons"></div>
+
+            <footer class="footer">
+              <div id="copyright">&copy; 2020 Travel Log</div>
+            </footer>
+    </body>
+</html>
 
 <style> 
 
 body {
-  padding: 10px;
- 
- 
+  margin: 0px;
+  padding: 0px;
+  font-family: 'gill sans';
 }
 
-header {
-  text-align: center;
-  margin: 10px 10px;
+.logo {
   color: tomato;
   font-family: Moonbright Demo;
-  font-size:40px;
-  text-align: left;
+  font-size: 75px;
+  padding: 25px 10px 25px 10px;
 }
 
-.form {
-  padding: 10px;
-  margin-right: 5px;
-  display:inline-block;
+.login-signup { 
+  position: absolute;
+  top: 80px;
+  left: 40px;
+  font-size: 20px;
+  color: blue;
+  margin: 40px;
+}
+
+.img {
+  background-image: url("imgs/travel_1_edit.jpg");
+  height: 900px;
+  background-position: center;
   background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.form-container-login {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 400px;
+  padding: 80px 40px;
+  background: rgba(0,0,0,0.4);
+  border-radius: 18px;
+}
+
+.form-container-signup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 450px;
+  padding: 80px 40px;
+  background: rgba(0,0,0,0.4);
+  border-radius: 18px;
+}
+
+p {
+  margin: 0px;
+  padding: 0 0 20px;
+  font-size: 26px;
+  font-weigth: bold;
   text-align: left;
+  color: white;  
 }
 
-h2 {
+form input {
+  width: 100%;
+  margin-bottom: 20px;
+  border: none;
+   border-bottom: 1px solid #fff;
+   background: transparent;
+   outline: none;
+    height: 25px;
+  color: black;
+  font-size: 25px;
+}
+
+.submit-button {
+  height: 40px;
+  text-align: center;
+  font-size: 25px;
+  background: skyblue;
+  cursor: pointer;
+  border-radius: 25px;
+  border: none;
+  outline: none;
+  margin-top: 20%;
+  margin-bottom: 10%;
   color: tomato;
-  font-family: Moonbright Demo;
-  font-size: 84px;
-}
-
-.log-sign { 
-  display: inline;
-  font-family: Georgia;
-  font-size: 18px;
-  color: #52527a;
-}
-
-.button {
-  font-family: Georgia;
-  color: #52527a;
-}
-
-h3 {
-  font-family: Georgia;
-  color: DodgerBlue;
 }
 
 h4 {
-  font-family: Georgia;
   padding: 8px 15px 8px 15px;
 	border: none;
   border-radius: 4px;
 	margin-bottom: 10px;
   color: SlateGray;
-    display:inline-block;
+  display: inline-block;
 }
 
-h5 {
-  font-family: Georgia;
-}
-
-p {
-  text-indent: 30px;
-
-}
-
-.link {
-  font-family: Georgia;
-   color: #52527a;
+a {
+  color: white;
+  text-align: center;
+  font-size: 26px;
+  font-weight: regular;
 }
 
 a:link {
   display: inline;
-  padding: 3px;
-  font-size: 16px;
 }
 
 a:hover {
@@ -140,65 +213,17 @@ li {
   font-size: 22px;
 }
 
-
-.img {
-  bottom: 0;
-  width: 100%;
-  height: auto;
-  display:inline-block;
-  background-repeat: no-repeat;
-  font-family: Georgia;
-  text-align: left;
-}
-
 .footer { 
   bottom: 0; 
-  width: 100%; 
-  height: 40px; 
+  margin-top: 30px;
+  margin-bottom: 20px;
   color: SlateGray;
-  margin: auto;
-  font-family: Georgia;
-  color: SlateGray;
-  }
+  text-align: center;
+  width:100%;
+  height:100px;
+  background-color: white;
+}
 
 </style> 
 
-    <body>
-      <h2>Travel Log</h2> 
-
-       
-          <% if !flash[:error].blank? %>
-             <div class="error">
-                <%= flash[:error] %>
-              </div>
-            <% end %> 
-
-          <% if !flash[:message].blank? %>
-              <div class="message">
-                <%= flash[:message] %>
-              </div>
-          <% end %>
   
-    
-        
-
-            <div class="nav">
-              <% if current_user %>
-                  <ul>
-                  <li><a class="link" href='/blogs/new'>New Blog</a></li>
-                  <li><a class="link" href='/blogs'>All Blogs</a></li>
-                  <li><a class="link" href='/logout'>Logout</a></li> 
-                  </ul>
-              <% end %>     
-        
-
-            <%= yield %>
-
-          <br><br>
-            <footer class="footer">
-              <div id="copyright">&copy; 2020 Travel Log</div>
-            </footer>
-       
-    </body>
-</html>
-

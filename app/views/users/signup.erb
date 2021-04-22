@@ -1,19 +1,15 @@
-<div class="log-sign">
-<h3>Get Started!</h3> 
-<a class="log-sign" href='/login'>Login</a> 
+
+
+<div class="form-container-signup">
+  <form action="/signup" method="POST">
+          <p>Username</p>
+            <input type="text" name="user_name" id="user_name"  id="username">
+          <p>Email</p>
+            <input type="text" name="email" id="email" id="email">
+          <p>Password</p>
+            <input type="password" name="password" id="password">
+            <input button class="submit-button" type="submit" value="sign up">
+            <a href='/login'><h5>Login</h5></a> 
+    </form>
 </div>
 
- <form class="form" action="/signup" method="POST">
-   <fieldset>
-      <label class="button" for="user_name"><h5>Username:</h5></label>
-      <input class="button" type="text" name="user_name" id="user_name" placeholder="username" id="username">
-      <label class="button" for="email"><h5>Email:</h5></label>
-      <input class="button" type="text" name="email" id="email" placeholder="Write your e-mail.." id="email">
-      <label class="button" for="password"><h5>Password:</h5></label>
-      <input class="button" type="password" name="password" id="password" placeholder="password" id="password">
-      <input  class="button" type="reset" value="Reset" style="text-align: left"/> 
-     <input class="button" button type="submit" value="sign up">
-    </fieldset>
-</form>
-
- <div> <img class="img" src="imgs/travel_1_edit.jpg"> 
