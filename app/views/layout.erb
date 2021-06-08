@@ -8,40 +8,36 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
   <body>
-      <div class="logo">Travel Blog</div>  
-          <% if !flash[:error].blank? %>
-             <div class="error">
-                <%= flash[:error] %>
-              </div>
-            <% end %> 
-
-          <% if !flash[:message].blank? %>
-              <div class="message">
-                <%= flash[:message] %>
-              </div>
-          <% end %>
+  
         
-            <div class="nav">
               <% if current_user %>
-                  <ul>
-                  <li><a class="link" href='/blogs/new'>New Blog</a></li>
-                  <li><a class="link" href='/blogs'>All Blogs</a></li>
-                  <li><a class="link" href='/logout'>Logout</a></li> 
-                  </ul>
-              <% end %>     
-          
-          <div class="img"></div>
+                <nav>
+                    <div>
+                    <h1 class="logo">Travel Blog</h1>
+                      <ul>
+                        <li><a class="link" href='/blogs/new'>New Blog</a></li>
+                        <li><a class="link" href='/blogs'>All Blogs</a></li>
+                        <li><a class="link" href='/logout'>Logout</a></li> 
+                      </ul>
+                    </div>  
+                  </nav>
+                 
+            <% end %>     
 
             <%= yield %>
-            
+
+            <a href="/" class="logo">Travel Blog</a>
+            <img src="imgs/background_img.jpg" class="img" alt="background image">
+
             <div class="footer">
               <img class="instagram" src="imgs/ig_icon.png" alt="instagram">
-              <img class="twitter" src="imgs/twitter_icon.png" alt="twitter">
+              <li class="fab fa-twitter"></li>
               <img class="facebook" src="imgs/fb_icon.png" alt="facebook">
               <img class="youtube" src="imgs/youtube_icon.png" alt="youtube">
              <br><br><br>
-             &copy; 2020 Travel Log. All rights reserved.
+             &copy; 2020 Travel Blog. All rights reserved.
             </div>
+          </div>
     </body>
 </html>
 
@@ -57,9 +53,33 @@ body {
   color: tomato;
   font-family: Moonbright Demo;
   font-size: 75px;
-  padding: 25px 10px 25px 10px;
+    text-decoration: none;
+  padding: 25px 10px 25px ;
+  float: left;
 }
 
+.signup-link, login-link{
+  color: white;
+  font-size: 26px;
+  text-align: center;
+  padding: 10px;
+  margin-right: 25px;
+  text-decoration: none; 
+}
+
+&::before {
+  content: attr(data-item);
+  transition: 0.5s;
+  color: #8254ff;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 0;
+  overflow: hidden;
+}
+  
 .login-signup { 
   position: absolute;
   top: 80px;
@@ -69,32 +89,22 @@ body {
   margin: 40px;
 }
 
-.img {
-  background-image: url("imgs/travel_1_edit.jpg");
-  width: 1600px;
-  height: 900px;
-  background-position: center;
-  background-repeat: no-repeat;
+.signup, .login {
+  float: left;
+}
+
+ a.signup-link, login-link {
+  color: white;
+  text-align: center;
+}
+
+.img { 
   background-size: cover;
-  position: relative;
+  height: 100%;
+  overflow: hidden;
 }
 
-.form-container-login {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  width: 400px;
-  height: 400px;
-  padding: 80px 40px;
-  background: rgba(0,0,0,0.4);
-  border-radius: 18px;
-}
-
+.form-container-login,
 .form-container-signup {
   position: absolute;
   top: 50%;
@@ -105,7 +115,7 @@ body {
   -o-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   width: 400px;
-  height: 450px;
+  height: 400px;
   padding: 80px 40px;
   background: rgba(0,0,0,0.4);
   border-radius: 18px;
@@ -128,7 +138,7 @@ form input {
    background: transparent;
    outline: none;
     height: 25px;
-  color: black;
+  color: white;
   font-size: 25px;
 }
 
@@ -153,21 +163,6 @@ h4 {
 	margin-bottom: 10px;
   color: SlateGray;
   display: inline-block;
-}
-
-a {
-  color: white;
-  text-align: center;
-  font-size: 26px;
-  font-weight: regular;
-}
-
-a:link {
-  display: inline;
-}
-
-a:hover {
-  color: tomato;
 }
 
 ul {
